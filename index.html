@@ -177,8 +177,8 @@
         /* Dark mode toggle button */
         .dark-mode-toggle {
     position: fixed;
-    top: 2px; /* Move to the bottom */
-    left: 10px;  /* Move to the right */
+    top: 2px; 
+    left: 10px;  
     background-color: #333;
     color: white;
     border: none;
@@ -269,7 +269,74 @@
         .drag-handle:hover {
             color: #0056b3;
         }
-    
+/* Container for the hidden menu */
+.hidden-menu {
+    position: fixed;
+    bottom: 0px;  /* Set to 2px from the top */
+    left: 2px;  /* Set to 10px from the left */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+    z-index: 9999; /* Ensure the menu is always on top of other content */
+}
+
+/* Save Image button */
+.save-image-btn {
+    background: none; /* No background */
+    color: #000; /* Use the blue color for the emoji */
+    border: none;
+    font-size: 12px; /* Larger font size for the emoji */
+    cursor: pointer;
+    transition: color 0.3s, transform 0.2s;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Hover effect for the Save Image button */
+.save-image-btn:hover {
+    color: #2980b9; /* Darker blue color when hovered */
+    transform: translateY(-4px);
+}
+
+/* Hidden buttons (initially off-screen) */
+.menu-buttons {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* When hovering over the Save Image button, show the menu */
+.hidden-menu:hover .menu-buttons {
+    display: flex;
+}
+
+/* Flat UI style for buttons */
+.menu-buttons button {
+    background-color: #00000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 11px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Hover effect for the buttons */
+.menu-buttons button:hover {
+    background-color: #007bff;
+    transform: translateY(-4px);
+}
+
+/* Focus effect for buttons */
+.menu-buttons button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.5);
+}
+
+
     </style>
 </head>
 <body>
@@ -293,6 +360,16 @@
         background-color: transparent !important;
     }
 </style>
+<div class="hidden-menu">
+    <button class="save-image-btn" onclick="saveTableState()">↺</button>
+    <div class="menu-buttons">
+        
+        <button onclick="resetTableState()">Reset</button>
+    </div>
+</div>
+
+
+
 
         <!-- First Table with merged "Corp Audit Notes" title -->
 <table>
@@ -996,6 +1073,131 @@ function copyPopupValue(buttonElement) {
         console.error('Failed to copy: ', err);
     });
 }
+document.addEventListener('DOMContentLoaded', () => {
+    const tables = document.querySelectorAll('tbody');
+
+    // Load saved state or default order
+    loadTableState();
+
+    let draggedRow = null;
+
+    tables.forEach(table => {
+        table.addEventListener('dragstart', (event) => {
+            draggedRow = event.target;
+            draggedRow.classList.add('dragging');
+        });
+
+        table.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            const targetRow = event.target.closest('tr');
+            if (targetRow && targetRow !== draggedRow) {
+                targetRow.classList.add('drop-target');
+            }
+        });
+
+        table.addEventListener('dragleave', (event) => {
+            const targetRow = event.target.closest('tr');
+            if (targetRow) {
+                targetRow.classList.remove('drop-target');
+            }
+        });
+
+        table.addEventListener('drop', (event) => {
+            event.preventDefault();
+            const targetRow = event.target.closest('tr');
+            if (targetRow && targetRow !== draggedRow) {
+                targetRow.classList.remove('drop-target');
+                const bounding = targetRow.getBoundingClientRect();
+                const offset = event.clientY - bounding.top + bounding.height / 2;
+                if (offset > 0) {
+                    targetRow.after(draggedRow);
+                } else {
+                    targetRow.before(draggedRow);
+                }
+            }
+            saveTableState();
+        });
+
+        table.addEventListener('dragend', () => {
+            draggedRow.classList.remove('dragging');
+            draggedRow = null;
+            table.querySelectorAll('.drop-target').forEach(row => row.classList.remove('drop-target'));
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const tables = document.querySelectorAll('tbody');
+
+    // Load saved state or default order on page load
+    loadTableState();
+
+    let draggedRow = null;
+
+    tables.forEach(table => {
+        table.addEventListener('dragstart', (event) => {
+            draggedRow = event.target;
+            draggedRow.classList.add('dragging');
+        });
+
+        table.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            const targetRow = event.target.closest('tr');
+            if (targetRow && targetRow !== draggedRow) {
+                targetRow.classList.add('drop-target');
+            }
+        });
+
+        table.addEventListener('dragleave', (event) => {
+            const targetRow = event.target.closest('tr');
+            if (targetRow) {
+                targetRow.classList.remove('drop-target');
+            }
+        });
+
+        table.addEventListener('drop', (event) => {
+            event.preventDefault();
+            const targetRow = event.target.closest('tr');
+            if (targetRow && targetRow !== draggedRow) {
+                targetRow.classList.remove('drop-target');
+                const bounding = targetRow.getBoundingClientRect();
+                const offset = event.clientY - bounding.top + bounding.height / 2;
+                if (offset > 0) {
+                    targetRow.after(draggedRow);
+                } else {
+                    targetRow.before(draggedRow);
+                }
+            }
+            saveTableState(); // Auto-save the state after each row move
+        });
+
+        table.addEventListener('dragend', () => {
+            draggedRow.classList.remove('dragging');
+            draggedRow = null;
+            table.querySelectorAll('.drop-target').forEach(row => row.classList.remove('drop-target'));
+        });
+    });
+});
+
+// Save the current table state to localStorage
+function saveTableState() {
+    const tableState = Array.from(document.querySelectorAll('tbody')).map(tbody => {
+        return Array.from(tbody.children).map(row => row.outerHTML);
+    });
+    localStorage.setItem('tableState', JSON.stringify(tableState));
+}
+
+// Load the saved table state from localStorage
+function loadTableState() {
+    const savedState = JSON.parse(localStorage.getItem('tableState'));
+    if (savedState) {
+        const tables = document.querySelectorAll('tbody');
+        tables.forEach((tbody, index) => {
+            tbody.innerHTML = savedState[index].join('');
+        });
+    }
+}
+
     </script>
 </body>
 </html>
