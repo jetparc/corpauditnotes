@@ -335,10 +335,10 @@
             <td class="popup-container" onclick="togglePopupMenu(this)" draggable="true">
                 Pasted text
                 <div class="popup-menu" id="popup-menu-merged">
-                     <button onclick="copyPopupValue(this)">Pasted text</button>
-                    <button onclick="copyPopupValue(this)">Pasted text - internal</button>
-                    <button onclick="copyPopupValue(this)">Pasted text - external</button>
-                    <button onclick="copyPopupValue(this)">Pasted text - Another response already used</button>
+                     <button data-copy="Pasted text" onclick="copyPopupValue(this)">Pasted text</button>
+                    <button data-copy="Pasted text - internal" onclick="copyPopupValue(this)">Internal</button>
+                    <button data-copy="Pasted text - external" onclick="copyPopupValue(this)">External</button>
+                    <button data-copy="Pasted text - Another response already used" onclick="copyPopupValue(this)">Another response already used</button>
                 </div>
                 <span class="copied-text">Copied</span>
             </td>
