@@ -570,7 +570,7 @@
         <tr>
             <td class="title-cell">Others</td>
         </tr>
-        <!-- Text box row for input -->
+        <!-- Text box and add button row -->
         <tr id="text-box-row">
             <td>
                 <textarea class="text-box" id="newItemText" placeholder="Enter your text here..."></textarea>
@@ -612,7 +612,7 @@
     right: 10px; /* Fix at the right of the row */
     top: 50%;
     transform: translateY(-50%);
-    padding: 0 4px;
+    padding: 0 6px;
     font-size: 12px;
     color: white;
     background-color: #28a745; /* Flat green color */
@@ -635,7 +635,7 @@
     right: 10px; /* Fix at the right of the row */
     top: 50%;
     transform: translateY(-50%);
-    padding: 0 6px;
+    padding: 0 8px;
     font-size: 12px;
     color: white;
     background-color: #dc3545; /* Flat red color */
@@ -723,60 +723,46 @@
         alertBox.classList.add('hidden');
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-    // Ensure the text-box-row is always at the top on page load
-    const othersTable = document.getElementById("others-table");
-    const textBoxRow = document.getElementById("text-box-row");
-
-    if (othersTable && textBoxRow) {
-        othersTable.insertBefore(textBoxRow, othersTable.children[1]);
-    }
-});
-
-function addToOthers() {
-    const textBox = document.getElementById("newItemText");
+    function addToOthers() {
+    const textBox = document.getElementById('newItemText');
     const newText = textBox.value.trim();
 
-    if (newText === "") {
-        showAlert("Please enter some text.");
+    if (newText === '') {
+        showAlert('Please enter some text.');
         return;
     }
 
-    const othersTable = document.getElementById("others-table");
+    const othersTable = document.getElementById('others-table');
+    const newRow = document.createElement('tr');
+    newRow.setAttribute('onclick', 'copyPhrase(this)');
 
-    // Create a new row for the text
-    const newRow = document.createElement("tr");
-    newRow.setAttribute("onclick", "copyPhrase(this)");
-
-    const newCell = document.createElement("td");
-    newCell.classList.add("row-content");
+    const newCell = document.createElement('td');
+    newCell.classList.add('row-content');
     newCell.textContent = newText;
 
-    const deleteButton = document.createElement("button");
-    deleteButton.classList.add("delete-button");
-    deleteButton.textContent = "-";
-    deleteButton.setAttribute("onclick", "deleteRow(this)");
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('delete-button');
+    deleteButton.textContent = '-';
+    deleteButton.setAttribute('onclick', 'deleteRow(this)');
 
-    const copiedSpan = document.createElement("span");
-    copiedSpan.classList.add("copied");
-    copiedSpan.textContent = "Copied";
+    const copiedSpan = document.createElement('span');
+    copiedSpan.classList.add('copied');
+    copiedSpan.textContent = 'Copied';
 
     newCell.appendChild(deleteButton);
     newCell.appendChild(copiedSpan);
     newRow.appendChild(newCell);
-
-    // Append the new row at the end of the table
     othersTable.appendChild(newRow);
 
-    // Clear the text box
-    textBox.value = "";
+    textBox.value = ''; // Clear text box after adding
 }
 
-function deleteRow(button) {
-    const row = button.closest("tr");
-    row.remove();
-}
 
+    // Function to delete a specific row
+    function deleteRow(button) {
+        const row = button.closest('tr');
+        row.remove();
+    }
 </script>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -796,161 +782,84 @@ function deleteRow(button) {
         alertBox.classList.add('hidden');
     }
 
-   document.addEventListener("DOMContentLoaded", () => {
-    // Load saved rows from local storage when the page is loaded
-    loadRowsFromStorage();
-
-    // Ensure text-box-row is always at the top
-    const othersTable = document.getElementById("others-table");
-    const textBoxRow = document.getElementById("text-box-row");
-    othersTable.insertBefore(textBoxRow, othersTable.children[1]);
-});
-
-function addToOthers() {
-    const textBox = document.getElementById("newItemText");
+    function addToOthers() {
+    const textBox = document.getElementById('newItemText');
     const newText = textBox.value.trim();
 
-    if (newText === "") {
-        showAlert("Please enter some text.");
+    if (newText === '') {
+        showAlert('Please enter some text.');
         return;
     }
 
-    const othersTable = document.getElementById("others-table");
-    const textBoxRow = document.getElementById("text-box-row");
+    const othersTable = document.getElementById('others-table');
+    const textBoxRow = document.getElementById('text-box-row');
 
-    // Create a new row for the text
-    const newRow = document.createElement("tr");
-    newRow.setAttribute("onclick", "copyPhrase(this)");
+    const newRow = document.createElement('tr');
+    newRow.setAttribute('onclick', 'copyPhrase(this)');
 
-    const newCell = document.createElement("td");
-    newCell.classList.add("row-content");
+    const newCell = document.createElement('td');
+    newCell.classList.add('row-content');
     newCell.textContent = newText;
 
-    const deleteButton = document.createElement("button");
-    deleteButton.classList.add("delete-button");
-    deleteButton.textContent = "-";
-    deleteButton.setAttribute("onclick", "deleteRow(this)");
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('delete-button');
+    deleteButton.textContent = '-';
+    deleteButton.setAttribute('onclick', 'deleteRow(this)');
 
-    const copiedSpan = document.createElement("span");
-    copiedSpan.classList.add("copied");
-    copiedSpan.textContent = "Copied";
+    const copiedSpan = document.createElement('span');
+    copiedSpan.classList.add('copied');
+    copiedSpan.textContent = 'Copied';
 
     newCell.appendChild(deleteButton);
     newCell.appendChild(copiedSpan);
     newRow.appendChild(newCell);
 
-    // Insert the new row above the text box row
+    // Insert the new row before the text box row
     othersTable.insertBefore(newRow, textBoxRow);
 
-    // Save rows to local storage
-    saveRowsToStorage();
-
-    // Clear the text box
-    textBox.value = "";
+    textBox.value = ''; // Clear the text box
 }
 
 function deleteRow(button) {
-    const row = button.closest("tr");
+    const row = button.closest('tr');
     row.remove();
+}
 
-    // Save updated rows to local storage
-document.addEventListener("DOMContentLoaded", () => {
-    // Load saved rows from local storage
-    loadRowsFromStorage();
 
-    // Ensure text-box-row is always at the top
-    const othersTable = document.getElementById("others-table");
-    const textBoxRow = document.getElementById("text-box-row");
-    othersTable.insertBefore(textBoxRow, othersTable.children[1]);
-});
-
-function addToOthers() {
-    const textBox = document.getElementById("newItemText");
-    const newText = textBox.value.trim();
-
-    if (newText === "") {
-        showAlert("Please enter some text.");
-        return;
+    function saveOthersToStorage() {
+        const rows = Array.from(document.querySelectorAll("#others-table tr"));
+        const othersData = rows.map(row => row.querySelector(".row-content")?.childNodes[0].nodeValue.trim()).filter(Boolean);
+        localStorage.setItem("othersData", JSON.stringify(othersData));
     }
 
-    const othersTable = document.getElementById("others-table");
-    const textBoxRow = document.getElementById("text-box-row");
+    function loadOthersFromStorage() {
+        const othersTable = document.getElementById('others-table');
+        const storedData = JSON.parse(localStorage.getItem("othersData")) || [];
 
-    // Create a new row for the text
-    const newRow = document.createElement("tr");
-    newRow.setAttribute("onclick", "copyPhrase(this)");
+        storedData.forEach(text => {
+            const newRow = document.createElement('tr');
+            newRow.setAttribute('onclick', 'copyPhrase(this)');
 
-    const newCell = document.createElement("td");
-    newCell.classList.add("row-content");
-    newCell.textContent = newText;
+            const newCell = document.createElement('td');
+            newCell.classList.add('row-content');
+            newCell.textContent = text;
 
-    const deleteButton = document.createElement("button");
-    deleteButton.classList.add("delete-button");
-    deleteButton.textContent = "-";
-    deleteButton.setAttribute("onclick", "deleteRow(this)");
+            const deleteButton = document.createElement('button');
+            deleteButton.classList.add('delete-button');
+            deleteButton.textContent = '-';
+            deleteButton.setAttribute('onclick', 'deleteRow(this)');
 
-    const copiedSpan = document.createElement("span");
-    copiedSpan.classList.add("copied");
-    copiedSpan.textContent = "Copied";
+            const copiedSpan = document.createElement('span');
+            copiedSpan.classList.add('copied');
+            copiedSpan.textContent = 'Copied';
 
-    newCell.appendChild(deleteButton);
-    newCell.appendChild(copiedSpan);
-    newRow.appendChild(newCell);
-
-    // Insert the new row above the text box row
-    othersTable.insertBefore(newRow, textBoxRow);
-
-    // Save rows to local storage
-    saveRowsToStorage();
-
-    // Clear the text box
-    textBox.value = "";
-}
-
-function deleteRow(button) {
-    const row = button.closest("tr");
-    row.remove();
-
-    // Save updated rows to local storage
-    saveRowsToStorage();
-}
-
-function saveRowsToStorage() {
-    const rows = Array.from(document.querySelectorAll("#others-table tr:not(#text-box-row):not(.title-cell)"));
-    const data = rows.map(row => row.querySelector(".row-content").textContent.trim());
-    localStorage.setItem("othersRows", JSON.stringify(data));
-}
-
-function loadRowsFromStorage() {
-    const storedRows = JSON.parse(localStorage.getItem("othersRows")) || [];
-    const othersTable = document.getElementById("others-table");
-    const textBoxRow = document.getElementById("text-box-row");
-
-    storedRows.forEach(text => {
-        const newRow = document.createElement("tr");
-        newRow.setAttribute("onclick", "copyPhrase(this)");
-
-        const newCell = document.createElement("td");
-        newCell.classList.add("row-content");
-        newCell.textContent = text;
-
-        const deleteButton = document.createElement("button");
-        deleteButton.classList.add("delete-button");
-        deleteButton.textContent = "-";
-        deleteButton.setAttribute("onclick", "deleteRow(this)");
-
-        const copiedSpan = document.createElement("span");
-        copiedSpan.classList.add("copied");
-        copiedSpan.textContent = "Copied";
-
-        newCell.appendChild(deleteButton);
-        newCell.appendChild(copiedSpan);
-        newRow.appendChild(newCell);
-
-        // Insert each row above the text box row
-        othersTable.insertBefore(newRow, textBoxRow);
-    });
-}
+            newCell.appendChild(deleteButton);
+            newCell.appendChild(copiedSpan);
+            newRow.appendChild(newCell);
+            othersTable.appendChild(newRow);
+        });
+    }
+  
 
 </script>
 
