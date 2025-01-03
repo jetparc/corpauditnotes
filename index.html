@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,10 +11,13 @@
             text-align: center;
             margin: 0;
             padding: 10px;
-            background-color: #f8f9fa; /* Light neutral background */
-            color: #333; /* Dark text color */
+            background-color: #f8f9fa;
+            /* Light neutral background */
+            color: #333;
+            /* Dark text color */
             transition: background-color 0.3s, color 0.3s;
         }
+
         .container {
             display: flex;
             justify-content: center;
@@ -21,6 +25,7 @@
             flex-wrap: wrap;
             width: 100%;
         }
+
         table {
             table-layout: auto;
             margin: 6px 4px;
@@ -29,77 +34,91 @@
             max-width: 500px;
             border-radius: 5px;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            background-color: #fff; /* White table background */
+            background-color: #fff;
+            /* White table background */
         }
-        th, td {
+
+        th,
+        td {
             padding: 6px;
             text-align: left;
-            border: 1px solid #dee2e6; /* Soft gray border */
+            border: 1px solid #dee2e6;
+            /* Soft gray border */
             word-wrap: break-word;
         }
+
         th {
-            background-color: #007bff; /* Soft blue for header */
+            background-color: #007bff;
+            /* Soft blue for header */
             color: white;
         }
+
         td {
-            background-color: #f8f9fa; /* Light gray for table rows */
+            background-color: #f8f9fa;
+            /* Light gray for table rows */
             cursor: pointer;
             user-select: none;
             position: relative;
         }
+
         td:hover {
-            background-color: #007bff; /* Blue on hover */
+            background-color: #007bff;
+            /* Blue on hover */
             color: white;
         }
+
         .dragging {
             opacity: 0.5;
             background-color: #d3d3d3;
         }
+
         .copied {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #28a745; /* Green for copied feedback */
+            background-color: #28a745;
+            /* Green for copied feedback */
             color: white;
             padding: 5px 10px;
             border-radius: 3px;
             font-size: 12px;
             display: none;
         }
+
         td.show-copied .copied {
             display: block;
         }
 
-       .popup-menu {
-    display: none; 
-    position: absolute; 
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    z-index: 10; 
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    max-height: 200px; 
-    overflow-y: auto; 
-    padding: 5px;
-    border-radius: 5px;
-    width: 100px; 
-}
+        .popup-menu {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            z-index: 10;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 5px;
+            border-radius: 5px;
+            width: 100px;
+        }
 
         .popup-menu button {
-    display: block; 
-    width: 100%; 
-    background-color: #fff;
-    padding: 10px; 
-    border: none;
-    text-align: left;
-    cursor: pointer;
-    font-size: 12px;
-    border-radius: 5px;
-    transition: background-color 0.2s ease-in-out;
-    white-space: normal; 
-    word-wrap: break-word; 
-    padding: 6px;
-}
+            display: block;
+            width: 100%;
+            background-color: #fff;
+            padding: 10px;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            font-size: 12px;
+            border-radius: 5px;
+            transition: background-color 0.2s ease-in-out;
+            white-space: normal;
+            word-wrap: break-word;
+            padding: 6px;
+        }
 
         .popup-menu button:hover {
             background-color: #007bff;
@@ -109,7 +128,6 @@
         .popup-container {
             position: relative;
             width: auto;
-          
         }
 
         .copied-text {
@@ -130,9 +148,11 @@
         }
 
         /* Dark mode styles */
+
         body.dark-mode {
             background-color: #2d2d2d;
-            color: #f4f4f4; /* Light text color in dark mode */
+            color: #f4f4f4;
+            /* Light text color in dark mode */
         }
 
         body.dark-mode table {
@@ -141,24 +161,30 @@
 
         body.dark-mode td {
             background-color: #444;
-            color: #f4f4f4; /* Light text in dark mode */
+            color: #f4f4f4;
+            /* Light text in dark mode */
         }
+
         body.dark-mode td:hover {
-            background-color: #6F6F6F; 
+            background-color: #6F6F6F;
             color: white;
         }
 
         body {
-            background-color: #f8f9fa; /* Light neutral background */
-            color: #333; /* Dark text color */
+            background-color: #f8f9fa;
+            /* Light neutral background */
+            color: #333;
+            /* Dark text color */
         }
 
         body table {
-            background-color: #fff; /* Default table background */
+            background-color: #fff;
+            /* Default table background */
         }
 
         body td {
-            color: #333; /* Default dark text color */
+            color: #333;
+            /* Default dark text color */
         }
 
         body.dark-mode th {
@@ -167,39 +193,50 @@
         }
 
         th {
-            background-color: #007bff; /* Header background */
-            color: white; /* Header text */
+            background-color: #007bff;
+            /* Header background */
+            color: white;
+            /* Header text */
         }
+
         body.dark-mode .custom-alert-content {
-             background-color: #3a3a3a;
+            background-color: #3a3a3a;
             color: #f4f4f4;
         }
-        /* Dark mode toggle button */
-        .dark-mode-toggle {
-    position: fixed;
-    top: 2px; /* Move to the bottom */
-    left: 10px;  /* Move to the right */
-    background-color: #333;
-    color: white;
-    border: none;
-    padding: 0px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 12px;  /* Smaller font size */
-    z-index: 10;
-    width: 16px;  /* Reduced size */
-    height: 16px;  /* Reduced size */
-}
 
+        /* Dark mode toggle button */
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 2px;
+            /* Move to the bottom */
+            left: 10px;
+            /* Move to the right */
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 0px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 12px;
+            /* Smaller font size */
+            z-index: 10;
+            width: 16px;
+            /* Reduced size */
+            height: 16px;
+            /* Reduced size */
+        }
 
         /* Responsive Design */
+
         @media (max-width: 768px) {
             table {
                 font-size: 14px;
                 width: 100%;
                 margin: 10px 0;
             }
-            th, td {
+            th,
+            td {
                 padding: 6px;
             }
         }
@@ -208,7 +245,8 @@
             table {
                 font-size: 12px;
             }
-            th, td {
+            th,
+            td {
                 padding: 5px;
             }
             h1 {
@@ -218,47 +256,52 @@
                 font-size: 14px;
             }
         }
-    
+
         /* General body styling */
+
         body {
             font-family: 'Roboto', sans-serif;
         }
 
-    
-
         /* Responsive font size for the pop-up menu */
+
         @media (max-width: 768px) {
             .popup-menu {
-                font-size: 12px; /* Smaller font size for smaller screens */
+                font-size: 12px;
+                /* Smaller font size for smaller screens */
             }
         }
 
         @media (max-width: 480px) {
             .popup-menu {
-                font-size: 10px; /* Even smaller font size for very small screens */
+                font-size: 10px;
+                /* Even smaller font size for very small screens */
             }
         }
-        
-         /* Add a transition effect for smooth reordering */
-    tbody tr {
-        transition: transform 0.2s ease-in-out;
-    }
 
-    /* Highlight potential drop targets */
-    tbody tr.drop-target {
-        outline: 2px dashed #007bff;
-        background-color: #e7f1ff;
-    }
+        /* Add a transition effect for smooth reordering */
 
-    /* Add scaling effect for the row being dragged */
-    .dragging {
-        transform: scale(1.05);
-        opacity: 0.7;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        cursor: grabbing;
-    }
-    
-    .drag-handle {
+        tbody tr {
+            transition: transform 0.2s ease-in-out;
+        }
+
+        /* Highlight potential drop targets */
+
+        tbody tr.drop-target {
+            outline: 2px dashed #007bff;
+            background-color: #e7f1ff;
+        }
+
+        /* Add scaling effect for the row being dragged */
+
+        .dragging {
+            transform: scale(1.05);
+            opacity: 0.7;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            cursor: grabbing;
+        }
+
+        .drag-handle {
             cursor: grab;
             margin-right: 8px;
             display: inline-block;
@@ -269,191 +312,195 @@
         .drag-handle:hover {
             color: #0056b3;
         }
-    
     </style>
 </head>
+
 <body>
     <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
     <div class="container">
 
 
-<style>
-    /* Style for the Persona QA title */
-    .title-cell {
-        text-align: center;
-        font-weight: bold;
-        background-color: #f0f0f0;
-        padding: 10px;
-        pointer-events: none; /* Disable hover effect on title */
-    }
+        <style>
+            /* Style for the Persona QA title */
 
-    /* Remove hover effect from title rows */
-    #persona-qa-table tr:first-child:hover,
-    #corp-audit-table tr:first-child:hover {
-        background-color: transparent !important;
-    }
-</style>
+            .title-cell {
+                text-align: center;
+                font-weight: bold;
+                background-color: #f0f0f0;
+                padding: 10px;
+                pointer-events: none;
+                /* Disable hover effect on title */
+            }
+
+            /* Remove hover effect from title rows */
+
+            #persona-qa-table tr:first-child:hover,
+            #corp-audit-table tr:first-child:hover {
+                background-color: transparent !important;
+            }
+        </style>
 
         <!-- First Table with merged "Corp Audit Notes" title -->
-<table>
-    <tbody id="phrase-list-1">
-        <tr>
-            <td colspan="1" class="title-cell">
-                Corp Audit Notes
-            </td>
-        </tr>
-        <tr draggable="true" onclick="copyPhrase(this)">
-                <td>Completed<span class="copied">Copied</span></td>
-            </tr>
-        <tr draggable="true" onclick="copyPhrase(this)">
-                <td>None<span class="copied">Copied</span></td>
-            </tr>
-        <tr>
-            <td class="popup-container" onclick="togglePopupMenu(this)" draggable="true">
-                Visiting Outlier pages
-                <div class="popup-menu" id="popup-menu-merged">
-<button data-copy="Visiting Outlier pages" onclick="copyPopupValue(this)">Visiting Outlier pages</button>
-<button data-copy="Visiting Outlier pages: <5 minutes" onclick="copyPopupValue(this)">&lt;5 minutes</button>
-<button data-copy="Visiting Outlier pages: 5 minutes" onclick="copyPopupValue(this)">5 minutes</button>
-<button data-copy="Visiting Outlier pages: 10 minutes" onclick="copyPopupValue(this)">10 minutes</button>
-<button data-copy="Visiting Outlier pages: 15 minutes" onclick="copyPopupValue(this)">15 minutes</button>
-<button data-copy="Visiting Outlier pages: 20 minutes" onclick="copyPopupValue(this)">20 minutes</button>
-<button data-copy="Visiting Outlier pages: 25 minutes" onclick="copyPopupValue(this)">25 minutes</button>
-<button data-copy="Visiting Outlier pages: 30 minutes" onclick="copyPopupValue(this)">30 minutes</button>
-<button data-copy="Visiting Outlier pages: 35 minutes" onclick="copyPopupValue(this)">35 minutes</button>
-<button data-copy="Visiting Outlier pages: 40 minutes" onclick="copyPopupValue(this)">40 minutes</button>
-<button data-copy="Visiting Outlier pages: 45 minutes" onclick="copyPopupValue(this)">45 minutes</button>
-<button data-copy="Visiting Outlier pages: 50 minutes" onclick="copyPopupValue(this)">50 minutes</button>
-<button data-copy="Visiting Outlier pages: 55 minutes" onclick="copyPopupValue(this)">55 minutes</button>
-<button data-copy="Visiting Outlier pages: 60 minutes" onclick="copyPopupValue(this)">60 minutes</button>
-<button data-copy="Visiting Outlier pages: 60+ minutes" onclick="copyPopupValue(this)">60+ minutes</button>
-                </div>
-                <span class="copied-text">Copied</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="popup-container" onclick="togglePopupMenu(this)" draggable="true">
-                Pasted text
-                <div class="popup-menu" id="popup-menu-merged">
-                     <button data-copy="Pasted text" onclick="copyPopupValue(this)">Pasted text</button>
-                    <button data-copy="Pasted text - internal" onclick="copyPopupValue(this)">Internal</button>
-                    <button data-copy="Pasted text - external" onclick="copyPopupValue(this)">External</button>
-                    <button data-copy="Pasted text - Another response already used" onclick="copyPopupValue(this)">Another response already used</button>
-                </div>
-                <span class="copied-text">Copied</span>
-            </td>
-        </tr>
+        <table>
+            <tbody id="phrase-list-1">
+                <tr>
+                    <td colspan="1" class="title-cell">
+                        Corp Audit Notes
+                    </td>
+                </tr>
+                <tr draggable="true" onclick="copyPhrase(this)">
+                    <td>Completed<span class="copied">Copied</span></td>
+                </tr>
+                <tr draggable="true" onclick="copyPhrase(this)">
+                    <td>None<span class="copied">Copied</span></td>
+                </tr>
+                <tr>
+                    <td class="popup-container" onclick="togglePopupMenu(this)" draggable="true">
+                        Visiting Outlier pages
+                        <div class="popup-menu" id="popup-menu-merged">
+                            <button data-copy="Visiting Outlier pages" onclick="copyPopupValue(this)">Visiting Outlier pages</button>
+                            <button data-copy="Visiting Outlier pages: <5 minutes" onclick="copyPopupValue(this)">&lt;5 minutes</button>
+                            <button data-copy="Visiting Outlier pages: 5 minutes" onclick="copyPopupValue(this)">5 minutes</button>
+                            <button data-copy="Visiting Outlier pages: 10 minutes" onclick="copyPopupValue(this)">10 minutes</button>
+                            <button data-copy="Visiting Outlier pages: 15 minutes" onclick="copyPopupValue(this)">15 minutes</button>
+                            <button data-copy="Visiting Outlier pages: 20 minutes" onclick="copyPopupValue(this)">20 minutes</button>
+                            <button data-copy="Visiting Outlier pages: 25 minutes" onclick="copyPopupValue(this)">25 minutes</button>
+                            <button data-copy="Visiting Outlier pages: 30 minutes" onclick="copyPopupValue(this)">30 minutes</button>
+                            <button data-copy="Visiting Outlier pages: 35 minutes" onclick="copyPopupValue(this)">35 minutes</button>
+                            <button data-copy="Visiting Outlier pages: 40 minutes" onclick="copyPopupValue(this)">40 minutes</button>
+                            <button data-copy="Visiting Outlier pages: 45 minutes" onclick="copyPopupValue(this)">45 minutes</button>
+                            <button data-copy="Visiting Outlier pages: 50 minutes" onclick="copyPopupValue(this)">50 minutes</button>
+                            <button data-copy="Visiting Outlier pages: 55 minutes" onclick="copyPopupValue(this)">55 minutes</button>
+                            <button data-copy="Visiting Outlier pages: 60 minutes" onclick="copyPopupValue(this)">60 minutes</button>
+                            <button data-copy="Visiting Outlier pages: 60+ minutes" onclick="copyPopupValue(this)">60+ minutes</button>
+                        </div>
+                        <span class="copied-text">Copied</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="popup-container" onclick="togglePopupMenu(this)" draggable="true">
+                        Pasted text
+                        <div class="popup-menu" id="popup-menu-merged">
+                            <button data-copy="Pasted text" onclick="copyPopupValue(this)">Pasted text</button>
+                            <button data-copy="Pasted text - internal" onclick="copyPopupValue(this)">Internal</button>
+                            <button data-copy="Pasted text - external" onclick="copyPopupValue(this)">External</button>
+                            <button data-copy="Pasted text - Another response already used" onclick="copyPopupValue(this)">Another response already used</button>
+                        </div>
+                        <span class="copied-text">Copied</span>
+                    </td>
+                </tr>
 
-        <tr draggable="true" onclick="copyPhrase(this)">
-                <td>Pasted URL<span class="copied">Copied</span></td>
-        </tr><tr draggable="true" onclick="copyPhrase(this)">
-                <td>Copy/Paste as per instructions<span class="copied">Copied</span></td>
-            </tr>
-        <tr draggable="true" onclick="copyPhrase(this)">
-                <td>Inactivity related to task<span class="copied">Copied</span></td>
-            </tr>
-        
-    <tbody id="phrase-list-merged">
-        <tr>
-            <td class="popup-container" onclick="togglePopupMenu(this)" draggable="true">
-                Inactivity
-                <div class="popup-menu" id="popup-menu-merged">
-    <button data-copy="Inactivity: <5 minutes" onclick="copyPopupValue(this)">&lt;5 minutes</button>
-<button data-copy="Inactivity: 5 minutes" onclick="copyPopupValue(this)">5 minutes</button>
-<button data-copy="Inactivity: 10 minutes" onclick="copyPopupValue(this)">10 minutes</button>
-<button data-copy="Inactivity: 15 minutes" onclick="copyPopupValue(this)">15 minutes</button>
-<button data-copy="Inactivity: 20 minutes" onclick="copyPopupValue(this)">20 minutes</button>
-<button data-copy="Inactivity: 25 minutes" onclick="copyPopupValue(this)">25 minutes</button>
-<button data-copy="Inactivity: 30 minutes" onclick="copyPopupValue(this)">30 minutes</button>
-<button data-copy="Inactivity: 35 minutes" onclick="copyPopupValue(this)">35 minutes</button>
-<button data-copy="Inactivity: 40 minutes" onclick="copyPopupValue(this)">40 minutes</button>
-<button data-copy="Inactivity: 45 minutes" onclick="copyPopupValue(this)">45 minutes</button>
-<button data-copy="Inactivity: 50 minutes" onclick="copyPopupValue(this)">50 minutes</button>
-<button data-copy="Inactivity: 55 minutes" onclick="copyPopupValue(this)">55 minutes</button>
-<button data-copy="Inactivity: 60 minutes" onclick="copyPopupValue(this)">60 minutes</button>
-<button data-copy="Inactivity: 60+ minutes" onclick="copyPopupValue(this)">60+ minutes</button>
-</div>
-                <span class="copied-text">Copied</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="popup-container" onclick="togglePopupMenu(this)" draggable="true">
-                Inactivity before submitting
-                <div class="popup-menu" id="popup-menu-merged">
-    <button data-copy="Inactivity before submitting: <5 minutes" onclick="copyPopupValue(this)">&lt;5 minutes</button>
-<button data-copy="Inactivity before submitting: 5 minutes" onclick="copyPopupValue(this)">5 minutes</button>
-<button data-copy="Inactivity before submitting: 10 minutes" onclick="copyPopupValue(this)">10 minutes</button>
-<button data-copy="Inactivity before submitting: 15 minutes" onclick="copyPopupValue(this)">15 minutes</button>
-<button data-copy="Inactivity before submitting: 20 minutes" onclick="copyPopupValue(this)">20 minutes</button>
-<button data-copy="Inactivity before submitting: 25 minutes" onclick="copyPopupValue(this)">25 minutes</button>
-<button data-copy="Inactivity before submitting: 30 minutes" onclick="copyPopupValue(this)">30 minutes</button>
-<button data-copy="Inactivity before submitting: 35 minutes" onclick="copyPopupValue(this)">35 minutes</button>
-<button data-copy="Inactivity before submitting: 40 minutes" onclick="copyPopupValue(this)">40 minutes</button>
-<button data-copy="Inactivity before submitting: 45 minutes" onclick="copyPopupValue(this)">45 minutes</button>
-<button data-copy="Inactivity before submitting: 50 minutes" onclick="copyPopupValue(this)">50 minutes</button>
-<button data-copy="Inactivity before submitting: 55 minutes" onclick="copyPopupValue(this)">55 minutes</button>
-<button data-copy="Inactivity before submitting: 60 minutes" onclick="copyPopupValue(this)">60 minutes</button>
-<button data-copy="Inactivity before submitting: 60+ minutes" onclick="copyPopupValue(this)">60+ minutes</button>
-</div>
-                <span class="copied-text">Copied</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="popup-container" onclick="togglePopupMenu(this)" draggable="true">
-                Meaningless activity
-                <div class="popup-menu" id="popup-menu-merged">
-    <button data-copy="Meaningless inactivity: <5 minutes" onclick="copyPopupValue(this)">&lt;5 minutes</button>
-<button data-copy="Meaningless inactivity: 5 minutes" onclick="copyPopupValue(this)">5 minutes</button>
-<button data-copy="Meaningless inactivity: 10 minutes" onclick="copyPopupValue(this)">10 minutes</button>
-<button data-copy="Meaningless inactivity: 15 minutes" onclick="copyPopupValue(this)">15 minutes</button>
-<button data-copy="Meaningless inactivity: 20 minutes" onclick="copyPopupValue(this)">20 minutes</button>
-<button data-copy="Meaningless inactivity: 25 minutes" onclick="copyPopupValue(this)">25 minutes</button>
-<button data-copy="Meaningless inactivity: 30 minutes" onclick="copyPopupValue(this)">30 minutes</button>
-<button data-copy="Meaningless inactivity: 35 minutes" onclick="copyPopupValue(this)">35 minutes</button>
-<button data-copy="Meaningless inactivity: 40 minutes" onclick="copyPopupValue(this)">40 minutes</button>
-<button data-copy="Meaningless inactivity: 45 minutes" onclick="copyPopupValue(this)">45 minutes</button>
-<button data-copy="Meaningless inactivity: 50 minutes" onclick="copyPopupValue(this)">50 minutes</button>
-<button data-copy="Meaningless inactivity: 55 minutes" onclick="copyPopupValue(this)">55 minutes</button>
-<button data-copy="Meaningless inactivity: 60 minutes" onclick="copyPopupValue(this)">60 minutes</button>
-<button data-copy="Meaningless inactivity: 60+ minutes" onclick="copyPopupValue(this)">60+ minutes</button>
-</div>
+                <tr draggable="true" onclick="copyPhrase(this)">
+                    <td>Pasted URL<span class="copied">Copied</span></td>
+                </tr>
+                <tr draggable="true" onclick="copyPhrase(this)">
+                    <td>Copy/Paste as per instructions<span class="copied">Copied</span></td>
+                </tr>
+                <tr draggable="true" onclick="copyPhrase(this)">
+                    <td>Inactivity related to task<span class="copied">Copied</span></td>
+                </tr>
 
-                <span class="copied-text">Copied</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="popup-container" onclick="togglePopupMenu(this)" draggable="true">
-                Meaningless activity before submitting
-                <div class="popup-menu" id="popup-menu-merged">
-    <button data-copy="Meaningless activity before submitting: <5 minutes" onclick="copyPopupValue(this)">&lt;5 minutes</button>
-<button data-copy="Meaningless activity before submitting: 5 minutes" onclick="copyPopupValue(this)">5 minutes</button>
-<button data-copy="Meaningless activity before submitting: 10 minutes" onclick="copyPopupValue(this)">10 minutes</button>
-<button data-copy="Meaningless activity before submitting: 15 minutes" onclick="copyPopupValue(this)">15 minutes</button>
-<button data-copy="Meaningless activity before submitting: 20 minutes" onclick="copyPopupValue(this)">20 minutes</button>
-<button data-copy="Meaningless activity before submitting: 25 minutes" onclick="copyPopupValue(this)">25 minutes</button>
-<button data-copy="Meaningless activity before submitting: 30 minutes" onclick="copyPopupValue(this)">30 minutes</button>
-<button data-copy="Meaningless activity before submitting: 35 minutes" onclick="copyPopupValue(this)">35 minutes</button>
-<button data-copy="Meaningless activity before submitting: 40 minutes" onclick="copyPopupValue(this)">40 minutes</button>
-<button data-copy="Meaningless activity before submitting: 45 minutes" onclick="copyPopupValue(this)">45 minutes</button>
-<button data-copy="Meaningless activity before submitting: 50 minutes" onclick="copyPopupValue(this)">50 minutes</button>
-<button data-copy="Meaningless activity before submitting: 55 minutes" onclick="copyPopupValue(this)">55 minutes</button>
-<button data-copy="Meaningless activity before submitting: 60 minutes" onclick="copyPopupValue(this)">60 minutes</button>
-<button data-copy="Meaningless activity before submitting: 60+ minutes" onclick="copyPopupValue(this)">60+ minutes</button>
-</div>
+                <tbody id="phrase-list-merged">
+                    <tr>
+                        <td class="popup-container" onclick="togglePopupMenu(this)" draggable="true">
+                            Inactivity
+                            <div class="popup-menu" id="popup-menu-merged">
+                                <button data-copy="Inactivity: <5 minutes" onclick="copyPopupValue(this)">&lt;5 minutes</button>
+                                <button data-copy="Inactivity: 5 minutes" onclick="copyPopupValue(this)">5 minutes</button>
+                                <button data-copy="Inactivity: 10 minutes" onclick="copyPopupValue(this)">10 minutes</button>
+                                <button data-copy="Inactivity: 15 minutes" onclick="copyPopupValue(this)">15 minutes</button>
+                                <button data-copy="Inactivity: 20 minutes" onclick="copyPopupValue(this)">20 minutes</button>
+                                <button data-copy="Inactivity: 25 minutes" onclick="copyPopupValue(this)">25 minutes</button>
+                                <button data-copy="Inactivity: 30 minutes" onclick="copyPopupValue(this)">30 minutes</button>
+                                <button data-copy="Inactivity: 35 minutes" onclick="copyPopupValue(this)">35 minutes</button>
+                                <button data-copy="Inactivity: 40 minutes" onclick="copyPopupValue(this)">40 minutes</button>
+                                <button data-copy="Inactivity: 45 minutes" onclick="copyPopupValue(this)">45 minutes</button>
+                                <button data-copy="Inactivity: 50 minutes" onclick="copyPopupValue(this)">50 minutes</button>
+                                <button data-copy="Inactivity: 55 minutes" onclick="copyPopupValue(this)">55 minutes</button>
+                                <button data-copy="Inactivity: 60 minutes" onclick="copyPopupValue(this)">60 minutes</button>
+                                <button data-copy="Inactivity: 60+ minutes" onclick="copyPopupValue(this)">60+ minutes</button>
+                            </div>
+                            <span class="copied-text">Copied</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="popup-container" onclick="togglePopupMenu(this)" draggable="true">
+                            Inactivity before submitting
+                            <div class="popup-menu" id="popup-menu-merged">
+                                <button data-copy="Inactivity before submitting: <5 minutes" onclick="copyPopupValue(this)">&lt;5 minutes</button>
+                                <button data-copy="Inactivity before submitting: 5 minutes" onclick="copyPopupValue(this)">5 minutes</button>
+                                <button data-copy="Inactivity before submitting: 10 minutes" onclick="copyPopupValue(this)">10 minutes</button>
+                                <button data-copy="Inactivity before submitting: 15 minutes" onclick="copyPopupValue(this)">15 minutes</button>
+                                <button data-copy="Inactivity before submitting: 20 minutes" onclick="copyPopupValue(this)">20 minutes</button>
+                                <button data-copy="Inactivity before submitting: 25 minutes" onclick="copyPopupValue(this)">25 minutes</button>
+                                <button data-copy="Inactivity before submitting: 30 minutes" onclick="copyPopupValue(this)">30 minutes</button>
+                                <button data-copy="Inactivity before submitting: 35 minutes" onclick="copyPopupValue(this)">35 minutes</button>
+                                <button data-copy="Inactivity before submitting: 40 minutes" onclick="copyPopupValue(this)">40 minutes</button>
+                                <button data-copy="Inactivity before submitting: 45 minutes" onclick="copyPopupValue(this)">45 minutes</button>
+                                <button data-copy="Inactivity before submitting: 50 minutes" onclick="copyPopupValue(this)">50 minutes</button>
+                                <button data-copy="Inactivity before submitting: 55 minutes" onclick="copyPopupValue(this)">55 minutes</button>
+                                <button data-copy="Inactivity before submitting: 60 minutes" onclick="copyPopupValue(this)">60 minutes</button>
+                                <button data-copy="Inactivity before submitting: 60+ minutes" onclick="copyPopupValue(this)">60+ minutes</button>
+                            </div>
+                            <span class="copied-text">Copied</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="popup-container" onclick="togglePopupMenu(this)" draggable="true">
+                            Meaningless activity
+                            <div class="popup-menu" id="popup-menu-merged">
+                                <button data-copy="Meaningless inactivity: <5 minutes" onclick="copyPopupValue(this)">&lt;5 minutes</button>
+                                <button data-copy="Meaningless inactivity: 5 minutes" onclick="copyPopupValue(this)">5 minutes</button>
+                                <button data-copy="Meaningless inactivity: 10 minutes" onclick="copyPopupValue(this)">10 minutes</button>
+                                <button data-copy="Meaningless inactivity: 15 minutes" onclick="copyPopupValue(this)">15 minutes</button>
+                                <button data-copy="Meaningless inactivity: 20 minutes" onclick="copyPopupValue(this)">20 minutes</button>
+                                <button data-copy="Meaningless inactivity: 25 minutes" onclick="copyPopupValue(this)">25 minutes</button>
+                                <button data-copy="Meaningless inactivity: 30 minutes" onclick="copyPopupValue(this)">30 minutes</button>
+                                <button data-copy="Meaningless inactivity: 35 minutes" onclick="copyPopupValue(this)">35 minutes</button>
+                                <button data-copy="Meaningless inactivity: 40 minutes" onclick="copyPopupValue(this)">40 minutes</button>
+                                <button data-copy="Meaningless inactivity: 45 minutes" onclick="copyPopupValue(this)">45 minutes</button>
+                                <button data-copy="Meaningless inactivity: 50 minutes" onclick="copyPopupValue(this)">50 minutes</button>
+                                <button data-copy="Meaningless inactivity: 55 minutes" onclick="copyPopupValue(this)">55 minutes</button>
+                                <button data-copy="Meaningless inactivity: 60 minutes" onclick="copyPopupValue(this)">60 minutes</button>
+                                <button data-copy="Meaningless inactivity: 60+ minutes" onclick="copyPopupValue(this)">60+ minutes</button>
+                            </div>
 
-                <span class="copied-text">Copied</span>
-            </td>
-        </tr>
-    </tbody>
-</table>
+                            <span class="copied-text">Copied</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="popup-container" onclick="togglePopupMenu(this)" draggable="true">
+                            Meaningless activity before submitting
+                            <div class="popup-menu" id="popup-menu-merged">
+                                <button data-copy="Meaningless activity before submitting: <5 minutes" onclick="copyPopupValue(this)">&lt;5 minutes</button>
+                                <button data-copy="Meaningless activity before submitting: 5 minutes" onclick="copyPopupValue(this)">5 minutes</button>
+                                <button data-copy="Meaningless activity before submitting: 10 minutes" onclick="copyPopupValue(this)">10 minutes</button>
+                                <button data-copy="Meaningless activity before submitting: 15 minutes" onclick="copyPopupValue(this)">15 minutes</button>
+                                <button data-copy="Meaningless activity before submitting: 20 minutes" onclick="copyPopupValue(this)">20 minutes</button>
+                                <button data-copy="Meaningless activity before submitting: 25 minutes" onclick="copyPopupValue(this)">25 minutes</button>
+                                <button data-copy="Meaningless activity before submitting: 30 minutes" onclick="copyPopupValue(this)">30 minutes</button>
+                                <button data-copy="Meaningless activity before submitting: 35 minutes" onclick="copyPopupValue(this)">35 minutes</button>
+                                <button data-copy="Meaningless activity before submitting: 40 minutes" onclick="copyPopupValue(this)">40 minutes</button>
+                                <button data-copy="Meaningless activity before submitting: 45 minutes" onclick="copyPopupValue(this)">45 minutes</button>
+                                <button data-copy="Meaningless activity before submitting: 50 minutes" onclick="copyPopupValue(this)">50 minutes</button>
+                                <button data-copy="Meaningless activity before submitting: 55 minutes" onclick="copyPopupValue(this)">55 minutes</button>
+                                <button data-copy="Meaningless activity before submitting: 60 minutes" onclick="copyPopupValue(this)">60 minutes</button>
+                                <button data-copy="Meaningless activity before submitting: 60+ minutes" onclick="copyPopupValue(this)">60+ minutes</button>
+                            </div>
+
+                            <span class="copied-text">Copied</span>
+                        </td>
+                    </tr>
+                </tbody>
+        </table>
 
 
         <!-- Second Table -->
         <table>
             <tbody id="phrase-list-2">
                 <tr draggable="true" onclick="copyPhrase(this)">
-                <td>Using grammar correction tool<span class="copied">Copied</span></td>
-            </tr>
+                    <td>Using grammar correction tool<span class="copied">Copied</span></td>
+                </tr>
                 <tr draggable="true" onclick="copyPhrase(this)">
                     <td>
                         Auto Typer
@@ -467,65 +514,66 @@
                     </td>
                 </tr>
                 <tr>
-            <td class="popup-container" onclick="togglePopupMenu(this)" draggable="true">
-                Other cheating software
-                <div class="popup-menu" id="popup-menu-merged">
-            <button data-copy="Auto Mouse Clicker - Other cheating software" onclick="copyPopupValue(this)">Auto Mouse Clicker</button>
-            <button data-copy="Auto Mouse Scroller - Other cheating software" onclick="copyPopupValue(this)">Auto Mouse Scroller</button>
-            <button data-copy="Auto Mouse Jiggler/Mover - Other cheating software" onclick="copyPopupValue(this)">Auto Mouse Jiggler/Mover</button>
-            <button data-copy="Other cheating software" onclick="copyPopupValue(this)">Other cheating software</button>
-            </div>
+                    <td class="popup-container" onclick="togglePopupMenu(this)" draggable="true">
+                        Other cheating software
+                        <div class="popup-menu" id="popup-menu-merged">
+                            <button data-copy="Auto Mouse Clicker - Other cheating software" onclick="copyPopupValue(this)">Auto Mouse Clicker</button>
+                            <button data-copy="Auto Mouse Scroller - Other cheating software" onclick="copyPopupValue(this)">Auto Mouse Scroller</button>
+                            <button data-copy="Auto Mouse Jiggler/Mover - Other cheating software" onclick="copyPopupValue(this)">Auto Mouse Jiggler/Mover</button>
+                            <button data-copy="Other cheating software" onclick="copyPopupValue(this)">Other cheating software</button>
+                        </div>
 
-                <span class="copied-text">Copied</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="popup-container" onclick="togglePopupMenu(this)" draggable="true">
-                Abuse: Task time was maxed out at the start
-                <div class="popup-menu" id="popup-menu-merged">
-            <button data-copy="Abuse - Task time was maxed out at the start: <5 minutes" onclick="copyPopupValue(this)">&lt;5 minutes</button>
-<button data-copy="Abuse - Task time was maxed out at the start: 5 minutes" onclick="copyPopupValue(this)">5 minutes</button>
-<button data-copy="Abuse - Task time was maxed out at the start: 10 minutes" onclick="copyPopupValue(this)">10 minutes</button>
-<button data-copy="Abuse - Task time was maxed out at the start: 15 minutes" onclick="copyPopupValue(this)">15 minutes</button>
-<button data-copy="Abuse - Task time was maxed out at the start: 20 minutes" onclick="copyPopupValue(this)">20 minutes</button>
-<button data-copy="Abuse - Task time was maxed out at the start: 25 minutes" onclick="copyPopupValue(this)">25 minutes</button>
-<button data-copy="Abuse - Task time was maxed out at the start: 30 minutes" onclick="copyPopupValue(this)">30 minutes</button>
-<button data-copy="Abuse - Task time was maxed out at the start: 35 minutes" onclick="copyPopupValue(this)">35 minutes</button>
-<button data-copy="Abuse - Task time was maxed out at the start: 40 minutes" onclick="copyPopupValue(this)">40 minutes</button>
-<button data-copy="Abuse - Task time was maxed out at the start: 45 minutes" onclick="copyPopupValue(this)">45 minutes</button>
-<button data-copy="Abuse - Task time was maxed out at the start: 50 minutes" onclick="copyPopupValue(this)">50 minutes</button>
-<button data-copy="Abuse - Task time was maxed out at the start: 55 minutes" onclick="copyPopupValue(this)">55 minutes</button>
-<button data-copy="Abuse - Task time was maxed out at the start: 60 minutes" onclick="copyPopupValue(this)">60 minutes</button>
-<button data-copy="Abuse - Task time was maxed out at the start: 60+ minutes" onclick="copyPopupValue(this)">60+ minutes</button>
-            </div>
+                        <span class="copied-text">Copied</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="popup-container" onclick="togglePopupMenu(this)" draggable="true">
+                        Abuse: Task time was maxed out at the start
+                        <div class="popup-menu" id="popup-menu-merged">
+                            <button data-copy="Abuse: Task time was maxed out at the start" onclick="copyPopupValue(this)">Abuse: Task time was maxed out at the start</button>
+                            <button data-copy="Abuse - Task time was maxed out at the start: <5 minutes" onclick="copyPopupValue(this)">&lt;5 minutes</button>
+                            <button data-copy="Abuse - Task time was maxed out at the start: 5 minutes" onclick="copyPopupValue(this)">5 minutes</button>
+                            <button data-copy="Abuse - Task time was maxed out at the start: 10 minutes" onclick="copyPopupValue(this)">10 minutes</button>
+                            <button data-copy="Abuse - Task time was maxed out at the start: 15 minutes" onclick="copyPopupValue(this)">15 minutes</button>
+                            <button data-copy="Abuse - Task time was maxed out at the start: 20 minutes" onclick="copyPopupValue(this)">20 minutes</button>
+                            <button data-copy="Abuse - Task time was maxed out at the start: 25 minutes" onclick="copyPopupValue(this)">25 minutes</button>
+                            <button data-copy="Abuse - Task time was maxed out at the start: 30 minutes" onclick="copyPopupValue(this)">30 minutes</button>
+                            <button data-copy="Abuse - Task time was maxed out at the start: 35 minutes" onclick="copyPopupValue(this)">35 minutes</button>
+                            <button data-copy="Abuse - Task time was maxed out at the start: 40 minutes" onclick="copyPopupValue(this)">40 minutes</button>
+                            <button data-copy="Abuse - Task time was maxed out at the start: 45 minutes" onclick="copyPopupValue(this)">45 minutes</button>
+                            <button data-copy="Abuse - Task time was maxed out at the start: 50 minutes" onclick="copyPopupValue(this)">50 minutes</button>
+                            <button data-copy="Abuse - Task time was maxed out at the start: 55 minutes" onclick="copyPopupValue(this)">55 minutes</button>
+                            <button data-copy="Abuse - Task time was maxed out at the start: 60 minutes" onclick="copyPopupValue(this)">60 minutes</button>
+                            <button data-copy="Abuse - Task time was maxed out at the start: 60+ minutes" onclick="copyPopupValue(this)">60+ minutes</button>
+                        </div>
 
-                <span class="copied-text">Copied</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="popup-container" onclick="togglePopupMenu(this)" draggable="true">
-                Task Starts Here
-                <div class="popup-menu" id="popup-menu-merged">
-            <button data-copy="Attempt 1 Task Starts Here" onclick="copyPopupValue(this)">Attempt 1</button>
-            <button data-copy="Attempt 2 Task Starts Here" onclick="copyPopupValue(this)">Attempt 2</button>
-            <button data-copy="Attempt 3 Task Starts Here" onclick="copyPopupValue(this)">Attempt 3</button>
-            </div>
+                        <span class="copied-text">Copied</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="popup-container" onclick="togglePopupMenu(this)" draggable="true">
+                        Task Starts Here
+                        <div class="popup-menu" id="popup-menu-merged">
+                            <button data-copy="Attempt 1 Task Starts Here" onclick="copyPopupValue(this)">Attempt 1</button>
+                            <button data-copy="Attempt 2 Task Starts Here" onclick="copyPopupValue(this)">Attempt 2</button>
+                            <button data-copy="Attempt 3 Task Starts Here" onclick="copyPopupValue(this)">Attempt 3</button>
+                        </div>
 
-                <span class="copied-text">Copied</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="popup-container" onclick="togglePopupMenu(this)" draggable="true">
-                Task Ends Here
-                <div class="popup-menu" id="popup-menu-merged">
-            <button data-copy="Attempt 1 Task Ends Here" onclick="copyPopupValue(this)">Attempt 1</button>
-            <button data-copy="Attempt 2 Task Ends Here" onclick="copyPopupValue(this)">Attempt 2</button>
-            <button data-copy="Attempt 3 Task Ends Here" onclick="copyPopupValue(this)">Attempt 3</button>
-            </div>
+                        <span class="copied-text">Copied</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="popup-container" onclick="togglePopupMenu(this)" draggable="true">
+                        Task Ends Here
+                        <div class="popup-menu" id="popup-menu-merged">
+                            <button data-copy="Attempt 1 Task Ends Here" onclick="copyPopupValue(this)">Attempt 1</button>
+                            <button data-copy="Attempt 2 Task Ends Here" onclick="copyPopupValue(this)">Attempt 2</button>
+                            <button data-copy="Attempt 3 Task Ends Here" onclick="copyPopupValue(this)">Attempt 3</button>
+                        </div>
 
-                <span class="copied-text">Copied</span>
-            </td>
-            </tr>
+                        <span class="copied-text">Copied</span>
+                    </td>
+                </tr>
                 <tr draggable="true" onclick="copyPhrase(this)">
                     <td>
                         Backgrounded
@@ -535,348 +583,349 @@
             </tbody>
         </table>
         <!-- New Table for Persona QA with Title Row -->
-<table>
-    <tbody id="persona-qa-table">
-        <tr>
-            <td class="title-cell">
-                Persona
-            </td>
-        </tr>
-        <tr draggable="true" onclick="copyPhrase(this)">
-            <td>
-                Fake ID
-                <span class="copied">Copied</span>
-            </td>
-        </tr>
-        <tr draggable="true" onclick="copyPhrase(this)">
-            <td>
-                Deepfake Selfie
-                <span class="copied">Copied</span>
-            </td>
-        </tr>
-        <tr draggable="true" onclick="copyPhrase(this)">
-            <td>
-                ID is a screenshot from a mobile device or computer/laptop screen
-                <span class="copied">Copied</span>
-            </td>
-        </tr>
-    </tbody>
-</table>
+        <table>
+            <tbody id="persona-qa-table">
+                <tr>
+                    <td class="title-cell">
+                        Persona
+                    </td>
+                </tr>
+                <tr draggable="true" onclick="copyPhrase(this)">
+                    <td>
+                        Fake ID
+                        <span class="copied">Copied</span>
+                    </td>
+                </tr>
+                <tr draggable="true" onclick="copyPhrase(this)">
+                    <td>
+                        Deepfake Selfie
+                        <span class="copied">Copied</span>
+                    </td>
+                </tr>
+                <tr draggable="true" onclick="copyPhrase(this)">
+                    <td>
+                        ID is a screenshot from a mobile device or computer/laptop screen
+                        <span class="copied">Copied</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-<!-- Empty Table for Others -->
-<table>
-    <tbody id="others-table">
-        <tr>
-            <td class="title-cell">
-                Others
-            </td>
-        </tr>
+        <!-- Empty Table for Others -->
+        <table>
+            <tbody id="others-table">
+                <tr>
+                    <td class="title-cell">
+                        Others
+                    </td>
+                </tr>
 
-        <tr draggable="true" onclick="copyPhrase(this)">
-            <td>
-                Meaningless activity/Meaningless activity before submitting: 0 min - clicking/moving/scrolling up and down without performing any valid task
-                <span class="copied">Copied</span>
-            </td>
-        </tr>
-        <tr draggable="true" onclick="copyPhrase(this)">
-            <td>
-                Error: Fullstory was not capturing the task
-                <span class="copied">Copied</span>
-            </td>
-        </tr>
-    </tbody>
-</table>
+                <tr draggable="true" onclick="copyPhrase(this)">
+                    <td>
+                        Meaningless activity/Meaningless activity before submitting: 0 min - clicking/moving/scrolling up and down without performing any valid task
+                        <span class="copied">Copied</span>
+                    </td>
+                </tr>
+                <tr draggable="true" onclick="copyPhrase(this)">
+                    <td>
+                        Error: Fullstory was not capturing the task
+                        <span class="copied">Copied</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-<!-- Text Box and Button Below "Others" Table -->
-<div class="input-container">
-    <textarea class="text-box" id="newItemText" placeholder="Enter your text here..."></textarea>
-    <button class="add-button" onclick="addToOthers()">Add to Others</button>
-</div>
+        <!-- Text Box and Button Below "Others" Table -->
+        <div class="input-container">
+            <textarea class="text-box" id="newItemText" placeholder="Enter your text here..."></textarea>
+            <button class="add-button" onclick="addToOthers()">Add to Others</button>
+        </div>
 
-<!-- Custom Alert Modal -->
-<div id="customAlert" class="custom-alert hidden">
-    <div class="custom-alert-content">
-        <p id="alertMessage">Please enter some text.</p>
-        <button class="close-alert" onclick="closeAlert()">OK</button>
-    </div>
-</div>
+        <!-- Custom Alert Modal -->
+        <div id="customAlert" class="custom-alert hidden">
+            <div class="custom-alert-content">
+                <p id="alertMessage">Please enter some text.</p>
+                <button class="close-alert" onclick="closeAlert()">OK</button>
+            </div>
+        </div>
 
-<style>
-    /* General Styling */
-    body {
-        font-family: 'Roboto', sans-serif;
-    }
+        <style>
+            /* General Styling */
 
-    /* Input and Button Styles */
-    .input-container {
-        display: flex;
-        align-items: center;
-        margin-top: 20px;
-    }
+            body {
+                font-family: 'Roboto', sans-serif;
+            }
 
-    .text-box {
-        width: 80%;
-        padding: 10px;
-        font-size: 12px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        resize: none;
-    }
+            /* Input and Button Styles */
 
-    .add-button {
-        margin-left: 10px;
-        padding: 5px 15px;
-        font-size: 14px;
-        font-weight: bold;
-        color: #fff;
-        background-color: #007bff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    }
+            .input-container {
+                display: flex;
+                align-items: center;
+                margin-top: 20px;
+            }
 
-    .add-button:hover {
-        background-color: #0056b3;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
+            .text-box {
+                width: 80%;
+                padding: 10px;
+                font-size: 12px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                resize: none;
+            }
 
-    .add-button:active {
-        background-color: #1e7e34;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    }
+            .add-button {
+                margin-left: 10px;
+                padding: 5px 15px;
+                font-size: 14px;
+                font-weight: bold;
+                color: #fff;
+                background-color: #007bff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            }
 
-    /* Style for the delete button */
-    .delete-button {
-        position: absolute;
-        right: 5px;
-        top: 50%;
-        transform: translateY(-50%);
-        padding: 0px 4px;
-        font-size: 12px;
-        font-weight: bold;
-        color: #fff;
-        background-color: #dc3545;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    }
+            .add-button:hover {
+                background-color: #0056b3;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            }
 
-    .delete-button:hover {
-        background-color: #c82333;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
+            .add-button:active {
+                background-color: #1e7e34;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            }
 
-    .delete-button:active {
-        background-color: #bd2130;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    }
+            /* Style for the delete button */
 
-    /* Custom Alert Modal */
-    .custom-alert {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-    }
+            .delete-button {
+                position: absolute;
+                right: 5px;
+                top: 50%;
+                transform: translateY(-50%);
+                padding: 0px 4px;
+                font-size: 12px;
+                font-weight: bold;
+                color: #fff;
+                background-color: #dc3545;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            }
 
-    .hidden {
-        display: none;
-    }
+            .delete-button:hover {
+                background-color: #c82333;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            }
 
-    .custom-alert-content {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        text-align: center;
-        max-width: 90%;
-    }
+            .delete-button:active {
+                background-color: #bd2130;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            }
 
-    .custom-alert-content p {
-        margin: 0 0 15px;
-        font-size: 14px;
-    }
+            /* Custom Alert Modal */
 
-    .close-alert {
-        padding: 10px 20px;
-        font-size: 14px;
-        color: #fff;
-        background-color: #007bff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+            .custom-alert {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+            }
 
-    .close-alert:hover {
-        background-color: #0056b3;
-    }
+            .hidden {
+                display: none;
+            }
 
-</style>
+            .custom-alert-content {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                text-align: center;
+                max-width: 90%;
+            }
 
-<script>
-    // Function to display the custom alert
-    function showAlert(message) {
-        const alertBox = document.getElementById('customAlert');
-        const alertMessage = document.getElementById('alertMessage');
-        alertMessage.textContent = message;
-        alertBox.classList.remove('hidden');
-    }
+            .custom-alert-content p {
+                margin: 0 0 15px;
+                font-size: 14px;
+            }
 
-    // Function to close the custom alert
-    function closeAlert() {
-        const alertBox = document.getElementById('customAlert');
-        alertBox.classList.add('hidden');
-    }
+            .close-alert {
+                padding: 10px 20px;
+                font-size: 14px;
+                color: #fff;
+                background-color: #007bff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
 
-    // Function to add text to "Others" table
-    function addToOthers() {
-        const textBox = document.getElementById('newItemText');
-        const newText = textBox.value.trim();
+            .close-alert:hover {
+                background-color: #0056b3;
+            }
+        </style>
 
-        if (newText === '') {
-            showAlert('Please enter some text.');
-            return;
-        }
+        <script>
+            // Function to display the custom alert
+            function showAlert(message) {
+                const alertBox = document.getElementById('customAlert');
+                const alertMessage = document.getElementById('alertMessage');
+                alertMessage.textContent = message;
+                alertBox.classList.remove('hidden');
+            }
 
-        const othersTable = document.getElementById('others-table');
-        const newRow = document.createElement('tr');
-        newRow.setAttribute('onclick', 'copyPhrase(this)');
+            // Function to close the custom alert
+            function closeAlert() {
+                const alertBox = document.getElementById('customAlert');
+                alertBox.classList.add('hidden');
+            }
 
-        const newCell = document.createElement('td');
-        newCell.classList.add('row-content');
-        newCell.textContent = newText;
+            // Function to add text to "Others" table
+            function addToOthers() {
+                const textBox = document.getElementById('newItemText');
+                const newText = textBox.value.trim();
 
-        const deleteButton = document.createElement('button');
-        deleteButton.classList.add('delete-button');
-        deleteButton.textContent = '-';
-        deleteButton.setAttribute('onclick', 'deleteRow(this)');
+                if (newText === '') {
+                    showAlert('Please enter some text.');
+                    return;
+                }
 
-        const copiedSpan = document.createElement('span');
-        copiedSpan.classList.add('copied');
-        copiedSpan.textContent = 'Copied';
+                const othersTable = document.getElementById('others-table');
+                const newRow = document.createElement('tr');
+                newRow.setAttribute('onclick', 'copyPhrase(this)');
 
-        newCell.appendChild(deleteButton);
-        newCell.appendChild(copiedSpan);
-        newRow.appendChild(newCell);
-        othersTable.appendChild(newRow);
+                const newCell = document.createElement('td');
+                newCell.classList.add('row-content');
+                newCell.textContent = newText;
 
-        // Clear the text box after adding
-        textBox.value = '';
-    }
+                const deleteButton = document.createElement('button');
+                deleteButton.classList.add('delete-button');
+                deleteButton.textContent = '-';
+                deleteButton.setAttribute('onclick', 'deleteRow(this)');
 
-    // Function to delete a specific row
-    function deleteRow(button) {
-        const row = button.closest('tr');
-        row.remove();
-    }
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        // Load data from localStorage on page load
-        loadOthersFromStorage();
-    });
+                const copiedSpan = document.createElement('span');
+                copiedSpan.classList.add('copied');
+                copiedSpan.textContent = 'Copied';
 
-    function showAlert(message) {
-        const alertBox = document.getElementById('customAlert');
-        const alertMessage = document.getElementById('alertMessage');
-        alertMessage.textContent = message;
-        alertBox.classList.remove('hidden');
-    }
+                newCell.appendChild(deleteButton);
+                newCell.appendChild(copiedSpan);
+                newRow.appendChild(newCell);
+                othersTable.appendChild(newRow);
 
-    function closeAlert() {
-        const alertBox = document.getElementById('customAlert');
-        alertBox.classList.add('hidden');
-    }
+                // Clear the text box after adding
+                textBox.value = '';
+            }
 
-    function addToOthers() {
-        const textBox = document.getElementById('newItemText');
-        const newText = textBox.value.trim();
+            // Function to delete a specific row
+            function deleteRow(button) {
+                const row = button.closest('tr');
+                row.remove();
+            }
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                // Load data from localStorage on page load
+                loadOthersFromStorage();
+            });
 
-        if (newText === '') {
-            showAlert('Please enter some text.');
-            return;
-        }
+            function showAlert(message) {
+                const alertBox = document.getElementById('customAlert');
+                const alertMessage = document.getElementById('alertMessage');
+                alertMessage.textContent = message;
+                alertBox.classList.remove('hidden');
+            }
 
-        const othersTable = document.getElementById('others-table');
-        const newRow = document.createElement('tr');
-        newRow.setAttribute('onclick', 'copyPhrase(this)');
+            function closeAlert() {
+                const alertBox = document.getElementById('customAlert');
+                alertBox.classList.add('hidden');
+            }
 
-        const newCell = document.createElement('td');
-        newCell.classList.add('row-content');
-        newCell.textContent = newText;
+            function addToOthers() {
+                const textBox = document.getElementById('newItemText');
+                const newText = textBox.value.trim();
 
-        const deleteButton = document.createElement('button');
-        deleteButton.classList.add('delete-button');
-        deleteButton.textContent = '-';
-        deleteButton.setAttribute('onclick', 'deleteRow(this)');
+                if (newText === '') {
+                    showAlert('Please enter some text.');
+                    return;
+                }
 
-        const copiedSpan = document.createElement('span');
-        copiedSpan.classList.add('copied');
-        copiedSpan.textContent = 'Copied';
+                const othersTable = document.getElementById('others-table');
+                const newRow = document.createElement('tr');
+                newRow.setAttribute('onclick', 'copyPhrase(this)');
 
-        newCell.appendChild(deleteButton);
-        newCell.appendChild(copiedSpan);
-        newRow.appendChild(newCell);
-        othersTable.appendChild(newRow);
+                const newCell = document.createElement('td');
+                newCell.classList.add('row-content');
+                newCell.textContent = newText;
 
-        saveOthersToStorage(); // Save to localStorage
+                const deleteButton = document.createElement('button');
+                deleteButton.classList.add('delete-button');
+                deleteButton.textContent = '-';
+                deleteButton.setAttribute('onclick', 'deleteRow(this)');
 
-        // Clear the text box after adding
-        textBox.value = '';
-    }
+                const copiedSpan = document.createElement('span');
+                copiedSpan.classList.add('copied');
+                copiedSpan.textContent = 'Copied';
 
-    function deleteRow(button) {
-        const row = button.closest('tr');
-        row.remove();
-        saveOthersToStorage(); // Save to localStorage
-    }
+                newCell.appendChild(deleteButton);
+                newCell.appendChild(copiedSpan);
+                newRow.appendChild(newCell);
+                othersTable.appendChild(newRow);
 
-    function saveOthersToStorage() {
-        const rows = Array.from(document.querySelectorAll("#others-table tr"));
-        const othersData = rows.map(row => row.querySelector(".row-content")?.childNodes[0].nodeValue.trim()).filter(Boolean);
-        localStorage.setItem("othersData", JSON.stringify(othersData));
-    }
+                saveOthersToStorage(); // Save to localStorage
 
-    function loadOthersFromStorage() {
-        const othersTable = document.getElementById('others-table');
-        const storedData = JSON.parse(localStorage.getItem("othersData")) || [];
+                // Clear the text box after adding
+                textBox.value = '';
+            }
 
-        storedData.forEach(text => {
-            const newRow = document.createElement('tr');
-            newRow.setAttribute('onclick', 'copyPhrase(this)');
+            function deleteRow(button) {
+                const row = button.closest('tr');
+                row.remove();
+                saveOthersToStorage(); // Save to localStorage
+            }
 
-            const newCell = document.createElement('td');
-            newCell.classList.add('row-content');
-            newCell.textContent = text;
+            function saveOthersToStorage() {
+                const rows = Array.from(document.querySelectorAll("#others-table tr"));
+                const othersData = rows.map(row => row.querySelector(".row-content") ? .childNodes[0].nodeValue.trim()).filter(Boolean);
+                localStorage.setItem("othersData", JSON.stringify(othersData));
+            }
 
-            const deleteButton = document.createElement('button');
-            deleteButton.classList.add('delete-button');
-            deleteButton.textContent = '-';
-            deleteButton.setAttribute('onclick', 'deleteRow(this)');
+            function loadOthersFromStorage() {
+                const othersTable = document.getElementById('others-table');
+                const storedData = JSON.parse(localStorage.getItem("othersData")) || [];
 
-            const copiedSpan = document.createElement('span');
-            copiedSpan.classList.add('copied');
-            copiedSpan.textContent = 'Copied';
+                storedData.forEach(text => {
+                    const newRow = document.createElement('tr');
+                    newRow.setAttribute('onclick', 'copyPhrase(this)');
 
-            newCell.appendChild(deleteButton);
-            newCell.appendChild(copiedSpan);
-            newRow.appendChild(newCell);
-            othersTable.appendChild(newRow);
-        });
-    }
-  
+                    const newCell = document.createElement('td');
+                    newCell.classList.add('row-content');
+                    newCell.textContent = text;
 
-</script>
+                    const deleteButton = document.createElement('button');
+                    deleteButton.classList.add('delete-button');
+                    deleteButton.textContent = '-';
+                    deleteButton.setAttribute('onclick', 'deleteRow(this)');
+
+                    const copiedSpan = document.createElement('span');
+                    copiedSpan.classList.add('copied');
+                    copiedSpan.textContent = 'Copied';
+
+                    newCell.appendChild(deleteButton);
+                    newCell.appendChild(copiedSpan);
+                    newRow.appendChild(newCell);
+                    othersTable.appendChild(newRow);
+                });
+            }
+        </script>
 
 
     </div>
@@ -926,76 +975,78 @@
                 console.error('Failed to copy: ', err);
             });
         }
-        
-            // Dark Mode Toggle
+
+        // Dark Mode Toggle
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
         }
 
         // Drag-and-Drop Reordering
         document.addEventListener('DOMContentLoaded', () => {
-    const tables = document.querySelectorAll('tbody');
-    let draggedRow = null;
+            const tables = document.querySelectorAll('tbody');
+            let draggedRow = null;
 
-    tables.forEach(table => {
-        table.addEventListener('dragstart', (event) => {
-            draggedRow = event.target;
-            draggedRow.classList.add('dragging');
-        });
+            tables.forEach(table => {
+                table.addEventListener('dragstart', (event) => {
+                    draggedRow = event.target;
+                    draggedRow.classList.add('dragging');
+                });
 
-        table.addEventListener('dragover', (event) => {
-            event.preventDefault(); // Necessary to allow drop
-            const targetRow = event.target.closest('tr');
-            if (targetRow && targetRow !== draggedRow) {
-                targetRow.classList.add('drop-target'); // Highlight drop target
-            }
-        });
+                table.addEventListener('dragover', (event) => {
+                    event.preventDefault(); // Necessary to allow drop
+                    const targetRow = event.target.closest('tr');
+                    if (targetRow && targetRow !== draggedRow) {
+                        targetRow.classList.add('drop-target'); // Highlight drop target
+                    }
+                });
 
-        table.addEventListener('dragleave', (event) => {
-            const targetRow = event.target.closest('tr');
-            if (targetRow) {
-                targetRow.classList.remove('drop-target'); // Remove highlight
-            }
-        });
+                table.addEventListener('dragleave', (event) => {
+                    const targetRow = event.target.closest('tr');
+                    if (targetRow) {
+                        targetRow.classList.remove('drop-target'); // Remove highlight
+                    }
+                });
 
-        table.addEventListener('drop', (event) => {
-            event.preventDefault();
-            const targetRow = event.target.closest('tr');
-            if (targetRow && targetRow !== draggedRow) {
-                targetRow.classList.remove('drop-target');
-                const bounding = targetRow.getBoundingClientRect();
-                const offset = event.clientY - bounding.top + bounding.height / 2;
-                if (offset > 0) {
-                    targetRow.after(draggedRow);
-                } else {
-                    targetRow.before(draggedRow);
-                }
-            }
-        });
+                table.addEventListener('drop', (event) => {
+                    event.preventDefault();
+                    const targetRow = event.target.closest('tr');
+                    if (targetRow && targetRow !== draggedRow) {
+                        targetRow.classList.remove('drop-target');
+                        const bounding = targetRow.getBoundingClientRect();
+                        const offset = event.clientY - bounding.top + bounding.height / 2;
+                        if (offset > 0) {
+                            targetRow.after(draggedRow);
+                        } else {
+                            targetRow.before(draggedRow);
+                        }
+                    }
+                });
 
-        table.addEventListener('dragend', () => {
-            draggedRow.classList.remove('dragging');
-            draggedRow = null;
-            table.querySelectorAll('.drop-target').forEach(row => {
-                row.classList.remove('drop-target');
+                table.addEventListener('dragend', () => {
+                    draggedRow.classList.remove('dragging');
+                    draggedRow = null;
+                    table.querySelectorAll('.drop-target').forEach(row => {
+                        row.classList.remove('drop-target');
+                    });
+                });
             });
         });
-    });
-});
-function copyPopupValue(buttonElement) {
-    const selectedValue = buttonElement.getAttribute('data-copy');
-    navigator.clipboard.writeText(selectedValue).then(() => {
-        const parentTd = buttonElement.closest('.popup-container');
-        const copiedText = parentTd.querySelector('.copied-text');
-        copiedText.classList.add('show');
-        setTimeout(() => {
-            copiedText.classList.remove('show');
-            parentTd.querySelector('.popup-menu').style.display = 'none';
-        }, 300);
-    }).catch(err => {
-        console.error('Failed to copy: ', err);
-    });
-}
+
+        function copyPopupValue(buttonElement) {
+            const selectedValue = buttonElement.getAttribute('data-copy');
+            navigator.clipboard.writeText(selectedValue).then(() => {
+                const parentTd = buttonElement.closest('.popup-container');
+                const copiedText = parentTd.querySelector('.copied-text');
+                copiedText.classList.add('show');
+                setTimeout(() => {
+                    copiedText.classList.remove('show');
+                    parentTd.querySelector('.popup-menu').style.display = 'none';
+                }, 300);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
     </script>
 </body>
+
 </html>
