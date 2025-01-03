@@ -483,8 +483,7 @@
             <td class="popup-container" onclick="togglePopupMenu(this)" draggable="true">
                 Abuse: Task time was maxed out at the start
                 <div class="popup-menu" id="popup-menu-merged">
-<button data-copy="Abuse: Task time was maxed out at the start" onclick="copyPopupValue(this)">Abuse: Task time was maxed out at the start</button>
-<button data-copy="Abuse - Task time was maxed out at the start: <5 minutes" onclick="copyPopupValue(this)">&lt;5 minutes</button>
+            <button data-copy="Abuse - Task time was maxed out at the start: <5 minutes" onclick="copyPopupValue(this)">&lt;5 minutes</button>
 <button data-copy="Abuse - Task time was maxed out at the start: 5 minutes" onclick="copyPopupValue(this)">5 minutes</button>
 <button data-copy="Abuse - Task time was maxed out at the start: 10 minutes" onclick="copyPopupValue(this)">10 minutes</button>
 <button data-copy="Abuse - Task time was maxed out at the start: 15 minutes" onclick="copyPopupValue(this)">15 minutes</button>
@@ -568,18 +567,31 @@
 <table>
     <tbody id="others-table">
         <tr>
-            <td class="title-cell">Others</td>
+            <td class="title-cell">
+                Others
+            </td>
         </tr>
-        <!-- Text box and add button row -->
-        <tr id="text-box-row">
+
+        <tr draggable="true" onclick="copyPhrase(this)">
             <td>
-                <textarea class="text-box" id="newItemText" placeholder="Enter your text here..."></textarea>
-                <button class="add-button" onclick="addToOthers()">+</button>
+                Meaningless activity/Meaningless activity before submitting: 0 min - clicking/moving/scrolling up and down without performing any valid task
+                <span class="copied">Copied</span>
+            </td>
+        </tr>
+        <tr draggable="true" onclick="copyPhrase(this)">
+            <td>
+                Error: Fullstory was not capturing the task
+                <span class="copied">Copied</span>
             </td>
         </tr>
     </tbody>
 </table>
 
+<!-- Text Box and Button Below "Others" Table -->
+<div class="input-container">
+    <textarea class="text-box" id="newItemText" placeholder="Enter your text here..."></textarea>
+    <button class="add-button" onclick="addToOthers()">Add to Others</button>
+</div>
 
 <!-- Custom Alert Modal -->
 <div id="customAlert" class="custom-alert hidden">
@@ -595,70 +607,73 @@
         font-family: 'Roboto', sans-serif;
     }
 
-   .text-box {
-    width: 100%; /* Adjust width */
-    height: 30px; /* Match table row height */
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    resize: none; /* Prevent resizing */
-    font-size: 12px;
-    padding: 5px;
-    vertical-align: middle;
-}
+    /* Input and Button Styles */
+    .input-container {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+    }
 
-.add-button {
-    position: absolute;
-    right: 10px; /* Fix at the right of the row */
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 0 6px;
-    font-size: 12px;
-    color: white;
-    background-color: #28a745; /* Flat green color */
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
+    .text-box {
+        width: 80%;
+        padding: 10px;
+        font-size: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: none;
+    }
 
-.add-button:hover {
-    background-color: #218838; /* Darker green on hover */
-}
+    .add-button {
+        margin-left: 10px;
+        padding: 5px 15px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.add-button:active {
-    background-color: #1e7e34; /* Even darker green when pressed */
-}
+    .add-button:hover {
+        background-color: #0056b3;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
 
-.delete-button {
-    position: absolute;
-    right: 10px; /* Fix at the right of the row */
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 0 8px;
-    font-size: 12px;
-    color: white;
-    background-color: #dc3545; /* Flat red color */
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
+    .add-button:active {
+        background-color: #1e7e34;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
 
-.delete-button:hover {
-    background-color: #c82333; /* Darker red on hover */
-}
+    /* Style for the delete button */
+    .delete-button {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 0px 4px;
+        font-size: 12px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #dc3545;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.delete-button:active {
-    background-color: #bd2130; /* Even darker red when pressed */
-}
+    .delete-button:hover {
+        background-color: #c82333;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
 
-.row-content {
-    position: relative; /* Ensure delete button aligns correctly */
-}
-
-
-
+    .delete-button:active {
+        background-color: #bd2130;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
 
     /* Custom Alert Modal */
     .custom-alert {
@@ -723,40 +738,41 @@
         alertBox.classList.add('hidden');
     }
 
+    // Function to add text to "Others" table
     function addToOthers() {
-    const textBox = document.getElementById('newItemText');
-    const newText = textBox.value.trim();
+        const textBox = document.getElementById('newItemText');
+        const newText = textBox.value.trim();
 
-    if (newText === '') {
-        showAlert('Please enter some text.');
-        return;
+        if (newText === '') {
+            showAlert('Please enter some text.');
+            return;
+        }
+
+        const othersTable = document.getElementById('others-table');
+        const newRow = document.createElement('tr');
+        newRow.setAttribute('onclick', 'copyPhrase(this)');
+
+        const newCell = document.createElement('td');
+        newCell.classList.add('row-content');
+        newCell.textContent = newText;
+
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('delete-button');
+        deleteButton.textContent = '-';
+        deleteButton.setAttribute('onclick', 'deleteRow(this)');
+
+        const copiedSpan = document.createElement('span');
+        copiedSpan.classList.add('copied');
+        copiedSpan.textContent = 'Copied';
+
+        newCell.appendChild(deleteButton);
+        newCell.appendChild(copiedSpan);
+        newRow.appendChild(newCell);
+        othersTable.appendChild(newRow);
+
+        // Clear the text box after adding
+        textBox.value = '';
     }
-
-    const othersTable = document.getElementById('others-table');
-    const newRow = document.createElement('tr');
-    newRow.setAttribute('onclick', 'copyPhrase(this)');
-
-    const newCell = document.createElement('td');
-    newCell.classList.add('row-content');
-    newCell.textContent = newText;
-
-    const deleteButton = document.createElement('button');
-    deleteButton.classList.add('delete-button');
-    deleteButton.textContent = '-';
-    deleteButton.setAttribute('onclick', 'deleteRow(this)');
-
-    const copiedSpan = document.createElement('span');
-    copiedSpan.classList.add('copied');
-    copiedSpan.textContent = 'Copied';
-
-    newCell.appendChild(deleteButton);
-    newCell.appendChild(copiedSpan);
-    newRow.appendChild(newCell);
-    othersTable.appendChild(newRow);
-
-    textBox.value = ''; // Clear text box after adding
-}
-
 
     // Function to delete a specific row
     function deleteRow(button) {
@@ -783,48 +799,47 @@
     }
 
     function addToOthers() {
-    const textBox = document.getElementById('newItemText');
-    const newText = textBox.value.trim();
+        const textBox = document.getElementById('newItemText');
+        const newText = textBox.value.trim();
 
-    if (newText === '') {
-        showAlert('Please enter some text.');
-        return;
+        if (newText === '') {
+            showAlert('Please enter some text.');
+            return;
+        }
+
+        const othersTable = document.getElementById('others-table');
+        const newRow = document.createElement('tr');
+        newRow.setAttribute('onclick', 'copyPhrase(this)');
+
+        const newCell = document.createElement('td');
+        newCell.classList.add('row-content');
+        newCell.textContent = newText;
+
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('delete-button');
+        deleteButton.textContent = '-';
+        deleteButton.setAttribute('onclick', 'deleteRow(this)');
+
+        const copiedSpan = document.createElement('span');
+        copiedSpan.classList.add('copied');
+        copiedSpan.textContent = 'Copied';
+
+        newCell.appendChild(deleteButton);
+        newCell.appendChild(copiedSpan);
+        newRow.appendChild(newCell);
+        othersTable.appendChild(newRow);
+
+        saveOthersToStorage(); // Save to localStorage
+
+        // Clear the text box after adding
+        textBox.value = '';
     }
 
-    const othersTable = document.getElementById('others-table');
-    const textBoxRow = document.getElementById('text-box-row');
-
-    const newRow = document.createElement('tr');
-    newRow.setAttribute('onclick', 'copyPhrase(this)');
-
-    const newCell = document.createElement('td');
-    newCell.classList.add('row-content');
-    newCell.textContent = newText;
-
-    const deleteButton = document.createElement('button');
-    deleteButton.classList.add('delete-button');
-    deleteButton.textContent = '-';
-    deleteButton.setAttribute('onclick', 'deleteRow(this)');
-
-    const copiedSpan = document.createElement('span');
-    copiedSpan.classList.add('copied');
-    copiedSpan.textContent = 'Copied';
-
-    newCell.appendChild(deleteButton);
-    newCell.appendChild(copiedSpan);
-    newRow.appendChild(newCell);
-
-    // Insert the new row before the text box row
-    othersTable.insertBefore(newRow, textBoxRow);
-
-    textBox.value = ''; // Clear the text box
-}
-
-function deleteRow(button) {
-    const row = button.closest('tr');
-    row.remove();
-}
-
+    function deleteRow(button) {
+        const row = button.closest('tr');
+        row.remove();
+        saveOthersToStorage(); // Save to localStorage
+    }
 
     function saveOthersToStorage() {
         const rows = Array.from(document.querySelectorAll("#others-table tr"));
