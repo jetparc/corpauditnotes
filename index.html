@@ -7,8 +7,6 @@
     <title>Corp Audit Notes</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* Base Styles */
-
         body {
             font-family: 'Roboto', sans-serif;
             font-size: 14px;
@@ -17,15 +15,13 @@
             min-height: 100vh;
             padding: 10px;
             background-image: url("https://raw.githubusercontent.com/jetparc/corpauditnotes/refs/heads/main/11852424_4853433.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
             color: #333;
             transition: background-color 0.3s, color 0.3s;
         }
-
-        /* Container Styles */
 
         .phrase-lists {
             display: flex;
@@ -36,8 +32,6 @@
             max-width: 1400px;
             margin: 0 auto;
         }
-
-        /* Table Styles */
 
         .phrase-table {
             table-layout: auto;
@@ -83,11 +77,8 @@
 
         .phrase-table__cell--title {
             background: rgba(255, 255, 255, 0.1);
-            /* Lighter transparent background */
             backdrop-filter: blur(5px);
-            /* Frosted effect */
             color: #666;
-            /* Lighter text color */
             font-weight: bold;
             text-align: center;
             padding: 10px;
@@ -96,6 +87,35 @@
 
         body:not(.dark-mode) .phrase-table__cell--title {
             color: #333;
+        }
+
+        .phrase-table__cell {
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .phrase-table__cell {
+                font-size: 12px;
+                padding: 6px;
+            }
+            .phrase-table__cell--title {
+                font-size: 12px;
+            }
+            .phrase-lists {
+                gap: 8px;
+            }
+            .phrase-table {
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .phrase-table__cell {
+                font-size: 12px;
+            }
+            .phrase-table__cell--title {
+                font-size: 12px;
+            }
         }
 
         /* Dark Mode Toggle */
@@ -272,31 +292,31 @@
         @media (max-width: 768px) {
             .phrase-table {
                 max-width: 90%;
-                margin: 10px auto;
+                margin: 12px auto;
             }
             .phrase-table__cell {
-                padding: 10px;
+                padding: 12px;
             }
             .input-container {
-                margin-top: 20px;
+                margin-top: 12px;
             }
             .input-container__text-box {
-                font-size: 14px;
+                font-size: 12px;
             }
             .input-container__add-button {
-                font-size: 14px;
+                font-size: 12px;
             }
             .delete-button {
                 font-size: 12px;
             }
             .custom-alert__content {
-                padding: 20px;
+                padding: 12px;
             }
             .custom-alert__message {
-                font-size: 16px;
+                font-size: 12px;
             }
             .custom-alert__close-button {
-                font-size: 14px;
+                font-size: 12px;
             }
         }
 
@@ -475,7 +495,7 @@
         /* Items inside Submenu */
 
         .submenu__item {
-            padding: 10px 15px;
+            padding: 8px 12px;
             font-size: 12px;
             cursor: pointer;
             transition: background-color 0.3s, padding 0.3s;
@@ -491,22 +511,6 @@
             background-color: #f0f0f0;
             padding-left: 30px;
             /* Slight left padding to enhance hover effect */
-        }
-
-        @media (max-height: 700px) {
-            /* Example media query */
-            .submenu {
-                max-height: 70vh;
-                /* Adjust max-height to 70% of viewport height */
-            }
-        }
-
-        @media (max-height: 700px) {
-            /* Another media query for smaller screens */
-            .submenu {
-                max-height: 50vh;
-                /* Adjust max-height to 50% of viewport height */
-            }
         }
 
         /* Dark Mode Submenu */
@@ -566,9 +570,9 @@
 
         @media (max-width: 768px) {
             .submenu {
-                min-width: 100%;
-                max-width: 90%;
-                max-height: 70%;
+                min-width: 50%;
+                max-width: 80%;
+                max-height: 100%;
             }
         }
 
@@ -667,11 +671,11 @@
         .drag-tip {
             font-size: 10px;
             font-weight: 200;
-            color: #333;
+            color: #778899;
             /* Deep purple */
             padding: 0px 10px;
             border-radius: 5px;
-            background-color: #c3cfe2;
+            background-color: rgba(255, 239, 213, 0.2);
             /* Light purple background */
             width: fit-content;
             text-align: center;
@@ -679,7 +683,7 @@
         }
 
         .drag-tip:hover {
-            background-color: rgba(75, 0, 130, 0.2);
+            background-color: rgba(195, 207, 226, 0.2);
             /* Slightly darker background on hover */
             transform: scale(1.02);
             /* Subtle zoom effect */
@@ -703,8 +707,8 @@
         .reset-button {
             font-size: 16px;
             font-weight: bold;
-            color: #333;
-            background-color: #c3cfe2;
+            color: #778899;
+            background-color: rgba(255, 239, 213, 0.2);
             /* Light purple background */
             border: none;
             border-radius: 5px;
@@ -718,7 +722,7 @@
         }
 
         .reset-button:hover {
-            background-color: rgba(75, 0, 130, 0.2);
+            background-color: rgba(195, 207, 226, 0.2);
             /* Slightly darker background on hover */
             transform: scale(1.4);
             /* Subtle zoom effect */
@@ -754,7 +758,7 @@
             opacity: 0;
             font-size: 12px;
             color: #fff;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(131, 137, 150, 0.8);
             /* Semi-transparent black */
             text-align: center;
             border-radius: 10px;
@@ -837,8 +841,8 @@
     </div>
     <div id="resetConfirmationAlert" class="custom-alert custom-alert--hidden" role="alert" aria-live="assertive">
         <div class="custom-alert__content">
-            <p class="custom-alert__message">Are you sure you want to reset the tables and delete ALL the saved
-                content?</p>
+            <p class="custom-alert__message">Are you sure you want to reset the tables and delete ALL the saved content?
+            </p>
             <button class="custom-alert__close-button" onclick="resetTables()">Yes</button>
             <button class="custom-alert__close-button" onclick="closeResetConfirmation()">No</button>
         </div>
@@ -1459,7 +1463,7 @@
             });
 
         }
-        
+
         function confirmReset() {
             const alertBox = document.getElementById('resetConfirmationAlert');
             alertBox.classList.remove('custom-alert--hidden');
@@ -1475,7 +1479,7 @@
             // Close the confirmation alert
             closeResetConfirmation();
 
-            
+
             // 1. Clear table data from local storage:
             localStorage.removeItem("allTableData");
 
