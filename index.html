@@ -98,12 +98,15 @@
                 font-size: 12px;
                 padding: 6px;
             }
+
             .phrase-table__cell--title {
                 font-size: 12px;
             }
+
             .phrase-lists {
                 gap: 8px;
             }
+
             .phrase-table {
                 max-width: 300px;
             }
@@ -113,6 +116,7 @@
             .phrase-table__cell {
                 font-size: 12px;
             }
+
             .phrase-table__cell--title {
                 font-size: 12px;
             }
@@ -294,27 +298,35 @@
                 max-width: 90%;
                 margin: 12px auto;
             }
+
             .phrase-table__cell {
                 padding: 12px;
             }
+
             .input-container {
                 margin-top: 12px;
             }
+
             .input-container__text-box {
                 font-size: 12px;
             }
+
             .input-container__add-button {
                 font-size: 12px;
             }
+
             .delete-button {
                 font-size: 12px;
             }
+
             .custom-alert__content {
                 padding: 12px;
             }
+
             .custom-alert__message {
                 font-size: 12px;
             }
+
             .custom-alert__close-button {
                 font-size: 12px;
             }
@@ -556,6 +568,7 @@
                 transform: translate(-50%, -60%) scale(0.8);
                 opacity: 0;
             }
+
             100% {
                 transform: translate(-50%, -50%) scale(1);
                 opacity: 1;
@@ -648,6 +661,7 @@
             from {
                 transform: scaleX(0.8);
             }
+
             to {
                 transform: scaleX(1);
             }
@@ -853,181 +867,211 @@
         let draggedRow = null; // Keep track of the currently dragged row
 
         // Store the original table data
-        const originalCorpAuditPhrases = [
+        const OnplatformPhrases = [
             'Completed',
             'None',
-            {
-                text: 'Visiting Outlier pages',
-                submenu: ['Visiting Outlier pages', '<span class="hidden-copy">Visiting Outlier pages - </span><5 minutes',
-                    '<span class="hidden-copy">Visiting Outlier pages - </span>5 minutes',
-                    '<span class="hidden-copy">Visiting Outlier pages - </span>6 minutes',
-                    '<span class="hidden-copy">Visiting Outlier pages - </span>7 minutes',
-                    '<span class="hidden-copy">Visiting Outlier pages - </span>8 minutes',
-                    '<span class="hidden-copy">Visiting Outlier pages - </span>9 minutes',
-                    '<span class="hidden-copy">Visiting Outlier pages - </span>10 minutes',
-                    '<span class="hidden-copy">Visiting Outlier pages - </span>15 minutes',
-                    '<span class="hidden-copy">Visiting Outlier pages - </span>20 minutes',
-                    '<span class="hidden-copy">Visiting Outlier pages - </span>25 minutes',
-                    '<span class="hidden-copy">Visiting Outlier pages - </span>30 minutes',
-                    '<span class="hidden-copy">Visiting Outlier pages - </span>35 minutes',
-                    '<span class="hidden-copy">Visiting Outlier pages - </span>40 minutes',
-                    '<span class="hidden-copy">Visiting Outlier pages - </span>45 minutes',
-                    '<span class="hidden-copy">Visiting Outlier pages - </span>50 minutes',
-                    '<span class="hidden-copy">Visiting Outlier pages - </span>55 minutes',
-                    '<span class="hidden-copy">Visiting Outlier pages - </span>60 minutes',
-                    '<span class="hidden-copy">Visiting Outlier pages - </span>60+ minutes'
-                ]
-            },
-            {
-                text: 'Pasted text',
-                submenu: ['Pasted text', '<span class="hidden-copy">Pasted text -</span> internal',
-                    '<span class="hidden-copy">Pasted text -</span> external',
-                    '<span class="hidden-copy">Pasted text -</span> Another response already used'
-                ]
-            },
-            'Pasted URL',
-            'Copy/Paste as per instructions',
-            'Inactivity related to task',
-            {
-                text: 'Inactivity',
-                submenu: [
-                    '<span class="hidden-copy">Inactivity - </span><5 minutes',
-                    '<span class="hidden-copy">Inactivity - </span>5 minutes',
-                    '<span class="hidden-copy">Inactivity - </span>6 minutes',
-                    '<span class="hidden-copy">Inactivity - </span>7 minutes',
-                    '<span class="hidden-copy">Inactivity - </span>8 minutes',
-                    '<span class="hidden-copy">Inactivity - </span>9 minutes',
-                    '<span class="hidden-copy">Inactivity - </span>10 minutes',
-                    '<span class="hidden-copy">Inactivity - </span>15 minutes',
-                    '<span class="hidden-copy">Inactivity - </span>20 minutes',
-                    '<span class="hidden-copy">Inactivity - </span>25 minutes',
-                    '<span class="hidden-copy">Inactivity - </span>30 minutes',
-                    '<span class="hidden-copy">Inactivity - </span>35 minutes',
-                    '<span class="hidden-copy">Inactivity - </span>40 minutes',
-                    '<span class="hidden-copy">Inactivity - </span>45 minutes',
-                    '<span class="hidden-copy">Inactivity - </span>50 minutes',
-                    '<span class="hidden-copy">Inactivity - </span>55 minutes',
-                    '<span class="hidden-copy">Inactivity - </span>60 minutes',
-                    '<span class="hidden-copy">Inactivity - </span>60+ minutes'
-
-                ]
-            },
-            {
-                text: 'Inactivity before submitting',
-                submenu: ['<span class="hidden-copy">Inactivity before submitting - </span><5 minutes',
-                    '<span class="hidden-copy">Inactivity before submitting - </span>5 minutes',
-                    '<span class="hidden-copy">Inactivity before submitting - </span>6 minutes',
-                    '<span class="hidden-copy">Inactivity before submitting - </span>7 minutes',
-                    '<span class="hidden-copy">Inactivity before submitting - </span>8 minutes',
-                    '<span class="hidden-copy">Inactivity before submitting - </span>9 minutes',
-                    '<span class="hidden-copy">Inactivity before submitting - </span>10 minutes',
-                    '<span class="hidden-copy">Inactivity before submitting - </span>15 minutes',
-                    '<span class="hidden-copy">Inactivity before submitting - </span>20 minutes',
-                    '<span class="hidden-copy">Inactivity before submitting - </span>25 minutes',
-                    '<span class="hidden-copy">Inactivity before submitting - </span>30 minutes',
-                    '<span class="hidden-copy">Inactivity before submitting - </span>35 minutes',
-                    '<span class="hidden-copy">Inactivity before submitting - </span>40 minutes',
-                    '<span class="hidden-copy">Inactivity before submitting - </span>45 minutes',
-                    '<span class="hidden-copy">Inactivity before submitting - </span>50 minutes',
-                    '<span class="hidden-copy">Inactivity before submitting - </span>55 minutes',
-                    '<span class="hidden-copy">Inactivity before submitting - </span>60 minutes',
-                    '<span class="hidden-copy">Inactivity before submitting - </span>60+ minutes'
-                ]
-            },
-            {
-                text: 'Meaningless activity',
-                submenu: ['<span class="hidden-copy">Meaningless activity - </span><5 minutes',
-                    '<span class="hidden-copy">Meaningless activity - </span>5 minutes',
-                    '<span class="hidden-copy">Meaningless activity - </span>6 minutes',
-                    '<span class="hidden-copy">Meaningless activity - </span>7 minutes',
-                    '<span class="hidden-copy">Meaningless activity - </span>8 minutes',
-                    '<span class="hidden-copy">Meaningless activity - </span>9 minutes',
-                    '<span class="hidden-copy">Meaningless activity - </span>10 minutes',
-                    '<span class="hidden-copy">Meaningless activity - </span>15 minutes',
-                    '<span class="hidden-copy">Meaningless activity - </span>20 minutes',
-                    '<span class="hidden-copy">Meaningless activity - </span>25 minutes',
-                    '<span class="hidden-copy">Meaningless activity - </span>30 minutes',
-                    '<span class="hidden-copy">Meaningless activity - </span>35 minutes',
-                    '<span class="hidden-copy">Meaningless activity - </span>40 minutes',
-                    '<span class="hidden-copy">Meaningless activity - </span>45 minutes',
-                    '<span class="hidden-copy">Meaningless activity - </span>50 minutes',
-                    '<span class="hidden-copy">Meaningless activity - </span>55 minutes',
-                    '<span class="hidden-copy">Meaningless activity - </span>60 minutes',
-                    '<span class="hidden-copy">Meaningless activity - </span>60+ minutes'
-                ]
-            },
-            {
-                text: 'Meaningless activity before submitting',
-                submenu: ['<span class="hidden-copy">Meaningless activity before submitting - </span><5 minutes',
-                    '<span class="hidden-copy">Meaningless activity before submitting - </span>5 minutes',
-                    '<span class="hidden-copy">Meaningless activity before submitting - </span>6 minutes',
-                    '<span class="hidden-copy">Meaningless activity before submitting - </span>7 minutes',
-                    '<span class="hidden-copy">Meaningless activity before submitting - </span>8 minutes',
-                    '<span class="hidden-copy">Meaningless activity before submitting - </span>9 minutes',
-                    '<span class="hidden-copy">Meaningless activity before submitting - </span>10 minutes',
-                    '<span class="hidden-copy">Meaningless activity before submitting - </span>15 minutes',
-                    '<span class="hidden-copy">Meaningless activity before submitting - </span>20 minutes',
-                    '<span class="hidden-copy">Meaningless activity before submitting - </span>25 minutes',
-                    '<span class="hidden-copy">Meaningless activity before submitting - </span>30 minutes',
-                    '<span class="hidden-copy">Meaningless activity before submitting - </span>35 minutes',
-                    '<span class="hidden-copy">Meaningless activity before submitting - </span>40 minutes',
-                    '<span class="hidden-copy">Meaningless activity before submitting - </span>45 minutes',
-                    '<span class="hidden-copy">Meaningless activity before submitting - </span>50 minutes',
-                    '<span class="hidden-copy">Meaningless activity before submitting - </span>55 minutes',
-                    '<span class="hidden-copy">Meaningless activity before submitting - </span>60 minutes',
-                    '<span class="hidden-copy">Meaningless activity before submitting - </span>60+ minutes'
-                ]
-            }
-        ];
-
-        const originalToolsPhrases = [
-            'Using grammar correction tool',
-            'Auto Typer',
-            'AI text generator',
-            {
-                text: 'Other cheating software',
-                submenu: ['Other cheating software', 'Auto Mouse Clicker <span class="hidden-copy">- Other cheating software</span>',
-                    'Auto Mouse Scroller <span class="hidden-copy">- Other cheating software</span>',
-                    'Auto Mouse Jiggler/Mover <span class="hidden-copy">- Other cheating software</span>'
-                ]
-            },
-            {
-                text: 'Abuse: Task time was maxed out at the start',
-                submenu: ['Abuse: Task time was maxed out at the start', '<span class="hidden-copy">Abuse: Task time was maxed out at the start - </span><5 minutes',
-                    '<span class="hidden-copy">Abuse: Task time was maxed out at the start - </span>5 minutes',
-                    '<span class="hidden-copy">Abuse: Task time was maxed out at the start - </span>6 minutes',
-                    '<span class="hidden-copy">Abuse: Task time was maxed out at the start - </span>7 minutes',
-                    '<span class="hidden-copy">Abuse: Task time was maxed out at the start - </span>8 minutes',
-                    '<span class="hidden-copy">Abuse: Task time was maxed out at the start - </span>9 minutes',
-                    '<span class="hidden-copy">Abuse: Task time was maxed out at the start - </span>10 minutes',
-                    '<span class="hidden-copy">Abuse: Task time was maxed out at the start - </span>15 minutes',
-                    '<span class="hidden-copy">Abuse: Task time was maxed out at the start - </span>20 minutes',
-                    '<span class="hidden-copy">Abuse: Task time was maxed out at the start - </span>25 minutes',
-                    '<span class="hidden-copy">Abuse: Task time was maxed out at the start - </span>30 minutes',
-                    '<span class="hidden-copy">Abuse: Task time was maxed out at the start - </span>35 minutes',
-                    '<span class="hidden-copy">Abuse: Task time was maxed out at the start - </span>40 minutes',
-                    '<span class="hidden-copy">Abuse: Task time was maxed out at the start - </span>45 minutes',
-                    '<span class="hidden-copy">Abuse: Task time was maxed out at the start - </span>50 minutes',
-                    '<span class="hidden-copy">Abuse: Task time was maxed out at the start - </span>55 minutes',
-                    '<span class="hidden-copy">Abuse: Task time was maxed out at the start - </span>60 minutes',
-                    '<span class="hidden-copy">Abuse: Task time was maxed out at the start - </span>60+ minutes'
-                ]
-            },
-            {
+             {
                 text: 'Task Starts Here',
-                submenu: ['Attempt 1 <span class="hidden-copy">Task Starts Here</span>',
+                submenu: [
+                    'Attempt 1 <span class="hidden-copy">Task Starts Here</span>',
                     'Attempt 2 <span class="hidden-copy">Task Starts Here</span>',
                     'Attempt 3 <span class="hidden-copy">Task Starts Here</span>'
                 ]
             },
             {
                 text: 'Task Ends Here',
-                submenu: ['Attempt 1 <span class="hidden-copy">Task Ends Here</span>',
+                submenu: [
+                    'Attempt 1 <span class="hidden-copy">Task Ends Here</span>',
                     'Attempt 2 <span class="hidden-copy">Task Ends Here</span>',
                     'Attempt 3 <span class="hidden-copy">Task Ends Here</span>'
                 ]
             },
             'Backgrounded'
+        ];
+        
+        const AbusePhrases = [
+            'Immediately answered questions',
+            {
+                text: 'Visiting Outlier pages',
+                submenu: [
+                    'Visiting Outlier pages',
+                    '<span class="hidden-copy">Visiting Outlier pages: </span><5 minutes',
+                    '<span class="hidden-copy">Visiting Outlier pages: </span>5 minutes',
+                    '<span class="hidden-copy">Visiting Outlier pages: </span>6 minutes',
+                    '<span class="hidden-copy">Visiting Outlier pages: </span>7 minutes',
+                    '<span class="hidden-copy">Visiting Outlier pages: </span>8 minutes',
+                    '<span class="hidden-copy">Visiting Outlier pages: </span>9 minutes',
+                    '<span class="hidden-copy">Visiting Outlier pages: </span>10 minutes',
+                    '<span class="hidden-copy">Visiting Outlier pages: </span>15 minutes',
+                    '<span class="hidden-copy">Visiting Outlier pages: </span>20 minutes',
+                    '<span class="hidden-copy">Visiting Outlier pages: </span>25 minutes',
+                    '<span class="hidden-copy">Visiting Outlier pages: </span>30 minutes',
+                    '<span class="hidden-copy">Visiting Outlier pages: </span>35 minutes',
+                    '<span class="hidden-copy">Visiting Outlier pages: </span>40 minutes',
+                    '<span class="hidden-copy">Visiting Outlier pages: </span>45 minutes',
+                    '<span class="hidden-copy">Visiting Outlier pages: </span>50 minutes',
+                    '<span class="hidden-copy">Visiting Outlier pages: </span>55 minutes',
+                    '<span class="hidden-copy">Visiting Outlier pages: </span>60 minutes',
+                    '<span class="hidden-copy">Visiting Outlier pages: </span>60+ minutes'
+
+                ]
+            },
+            'Inactivity related to task',
+            {
+                text: 'Inactivity',
+                submenu: [
+                    '<span class="hidden-copy">Inactivity: </span><5 minutes',
+                    '<span class="hidden-copy">Inactivity: </span>5 minutes',
+                    '<span class="hidden-copy">Inactivity: </span>6 minutes',
+                    '<span class="hidden-copy">Inactivity: </span>7 minutes',
+                    '<span class="hidden-copy">Inactivity: </span>8 minutes',
+                    '<span class="hidden-copy">Inactivity: </span>9 minutes',
+                    '<span class="hidden-copy">Inactivity: </span>10 minutes',
+                    '<span class="hidden-copy">Inactivity: </span>15 minutes',
+                    '<span class="hidden-copy">Inactivity: </span>20 minutes',
+                    '<span class="hidden-copy">Inactivity: </span>25 minutes',
+                    '<span class="hidden-copy">Inactivity: </span>30 minutes',
+                    '<span class="hidden-copy">Inactivity: </span>35 minutes',
+                    '<span class="hidden-copy">Inactivity: </span>40 minutes',
+                    '<span class="hidden-copy">Inactivity: </span>45 minutes',
+                    '<span class="hidden-copy">Inactivity: </span>50 minutes',
+                    '<span class="hidden-copy">Inactivity: </span>55 minutes',
+                    '<span class="hidden-copy">Inactivity: </span>60 minutes',
+                    '<span class="hidden-copy">Inactivity: </span>60+ minutes'
+
+                ]
+            },
+            {
+                text: 'Inactivity before submitting',
+                submenu: [
+                    '<span class="hidden-copy">Inactivity before submitting: </span><5 minutes',
+                    '<span class="hidden-copy">Inactivity before submitting: </span>5 minutes',
+                    '<span class="hidden-copy">Inactivity before submitting: </span>6 minutes',
+                    '<span class="hidden-copy">Inactivity before submitting: </span>7 minutes',
+                    '<span class="hidden-copy">Inactivity before submitting: </span>8 minutes',
+                    '<span class="hidden-copy">Inactivity before submitting: </span>9 minutes',
+                    '<span class="hidden-copy">Inactivity before submitting: </span>10 minutes',
+                    '<span class="hidden-copy">Inactivity before submitting: </span>15 minutes',
+                    '<span class="hidden-copy">Inactivity before submitting: </span>20 minutes',
+                    '<span class="hidden-copy">Inactivity before submitting: </span>25 minutes',
+                    '<span class="hidden-copy">Inactivity before submitting: </span>30 minutes',
+                    '<span class="hidden-copy">Inactivity before submitting: </span>35 minutes',
+                    '<span class="hidden-copy">Inactivity before submitting: </span>40 minutes',
+                    '<span class="hidden-copy">Inactivity before submitting: </span>45 minutes',
+                    '<span class="hidden-copy">Inactivity before submitting: </span>50 minutes',
+                    '<span class="hidden-copy">Inactivity before submitting: </span>55 minutes',
+                    '<span class="hidden-copy">Inactivity before submitting: </span>60 minutes',
+                    '<span class="hidden-copy">Inactivity before submitting: </span>60+ minutes'
+
+                ]
+            },
+            {
+                text: 'Meaningless activity',
+                submenu: [
+                    '<span class="hidden-copy">Meaningless activity: </span><5 minutes',
+                    '<span class="hidden-copy">Meaningless activity: </span>5 minutes',
+                    '<span class="hidden-copy">Meaningless activity: </span>6 minutes',
+                    '<span class="hidden-copy">Meaningless activity: </span>7 minutes',
+                    '<span class="hidden-copy">Meaningless activity: </span>8 minutes',
+                    '<span class="hidden-copy">Meaningless activity: </span>9 minutes',
+                    '<span class="hidden-copy">Meaningless activity: </span>10 minutes',
+                    '<span class="hidden-copy">Meaningless activity: </span>15 minutes',
+                    '<span class="hidden-copy">Meaningless activity: </span>20 minutes',
+                    '<span class="hidden-copy">Meaningless activity: </span>25 minutes',
+                    '<span class="hidden-copy">Meaningless activity: </span>30 minutes',
+                    '<span class="hidden-copy">Meaningless activity: </span>35 minutes',
+                    '<span class="hidden-copy">Meaningless activity: </span>40 minutes',
+                    '<span class="hidden-copy">Meaningless activity: </span>45 minutes',
+                    '<span class="hidden-copy">Meaningless activity: </span>50 minutes',
+                    '<span class="hidden-copy">Meaningless activity: </span>55 minutes',
+                    '<span class="hidden-copy">Meaningless activity: </span>60 minutes',
+                    '<span class="hidden-copy">Meaningless activity: </span>60+ minutes'
+
+                ]
+            },
+            {
+                text: 'Meaningless activity before submitting',
+                submenu: [
+                    '<span class="hidden-copy">Meaningless activity before submitting: </span><5 minutes',
+                    '<span class="hidden-copy">Meaningless activity before submitting: </span>5 minutes',
+                    '<span class="hidden-copy">Meaningless activity before submitting: </span>6 minutes',
+                    '<span class="hidden-copy">Meaningless activity before submitting: </span>7 minutes',
+                    '<span class="hidden-copy">Meaningless activity before submitting: </span>8 minutes',
+                    '<span class="hidden-copy">Meaningless activity before submitting: </span>9 minutes',
+                    '<span class="hidden-copy">Meaningless activity before submitting: </span>10 minutes',
+                    '<span class="hidden-copy">Meaningless activity before submitting: </span>15 minutes',
+                    '<span class="hidden-copy">Meaningless activity before submitting: </span>20 minutes',
+                    '<span class="hidden-copy">Meaningless activity before submitting: </span>25 minutes',
+                    '<span class="hidden-copy">Meaningless activity before submitting: </span>30 minutes',
+                    '<span class="hidden-copy">Meaningless activity before submitting: </span>35 minutes',
+                    '<span class="hidden-copy">Meaningless activity before submitting: </span>40 minutes',
+                    '<span class="hidden-copy">Meaningless activity before submitting: </span>45 minutes',
+                    '<span class="hidden-copy">Meaningless activity before submitting: </span>50 minutes',
+                    '<span class="hidden-copy">Meaningless activity before submitting: </span>55 minutes',
+                    '<span class="hidden-copy">Meaningless activity before submitting: </span>60 minutes',
+                    '<span class="hidden-copy">Meaningless activity before submitting: </span>60+ minutes'
+
+                ]
+            }, 
+            {
+                text: 'Abuse: Task time was maxed out at the start',
+                submenu: [
+                    'Abuse: Task time was maxed out at the start',
+                    '<span class="hidden-copy">Abuse: </span><5 minutes<span class="hidden-copy"> - Task time was maxed out at the start</span>',
+                    '<span class="hidden-copy">Abuse: </span>5 minutes<span class="hidden-copy"> - Task time was maxed out at the start</span>',
+                    '<span class="hidden-copy">Abuse: </span>6 minutes<span class="hidden-copy"> - Task time was maxed out at the start</span>',
+                    '<span class="hidden-copy">Abuse: </span>7 minutes<span class="hidden-copy"> - Task time was maxed out at the start</span>',
+                    '<span class="hidden-copy">Abuse: </span>8 minutes<span class="hidden-copy"> - Task time was maxed out at the start</span>',
+                    '<span class="hidden-copy">Abuse: </span>9 minutes<span class="hidden-copy"> - Task time was maxed out at the start</span>',
+                    '<span class="hidden-copy">Abuse: </span>10 minutes<span class="hidden-copy"> - Task time was maxed out at the start</span>',
+                    '<span class="hidden-copy">Abuse: </span>15 minutes<span class="hidden-copy"> - Task time was maxed out at the start</span>',
+                    '<span class="hidden-copy">Abuse: </span>20 minutes<span class="hidden-copy"> - Task time was maxed out at the start</span>',
+                    '<span class="hidden-copy">Abuse: </span>25 minutes<span class="hidden-copy"> - Task time was maxed out at the start</span>',
+                    '<span class="hidden-copy">Abuse: </span>30 minutes<span class="hidden-copy"> - Task time was maxed out at the start</span>',
+                    '<span class="hidden-copy">Abuse: </span>35 minutes<span class="hidden-copy"> - Task time was maxed out at the start</span>',
+                    '<span class="hidden-copy">Abuse: </span>40 minutes<span class="hidden-copy"> - Task time was maxed out at the start</span>',
+                    '<span class="hidden-copy">Abuse: </span>45 minutes<span class="hidden-copy"> - Task time was maxed out at the start</span>',
+                    '<span class="hidden-copy">Abuse: </span>50 minutes<span class="hidden-copy"> - Task time was maxed out at the start</span>',
+                    '<span class="hidden-copy">Abuse: </span>55 minutes<span class="hidden-copy"> - Task time was maxed out at the start</span>',
+                    '<span class="hidden-copy">Abuse: </span>60 minutes<span class="hidden-copy"> - Task time was maxed out at the start</span>',
+                    '<span class="hidden-copy">Abuse: </span>60+ minutes<span class="hidden-copy"> - Task time was maxed out at the start</span>'
+                ]
+            },
+        ];
+
+        const CheatingPhrases = [
+            {
+            text: 'Pasted text',
+                submenu: [
+                    'Pasted text', 
+                    '<span class="hidden-copy">Pasted text -</span> internal',
+                    '<span class="hidden-copy">Pasted text -</span> external',
+                    '<span class="hidden-copy">Pasted text -</span> Another response already used'
+                ]
+            },
+            'Pasted URL',
+            'Pasted as per instruction/s (Pasting Allowed)',
+            'Using grammar correction tool',
+            'Auto Typer',
+            {
+                text: 'AI text generator',
+                submenu: [
+                    'AI text generator',
+                    'Outlier Playground <span class="hidden-copy">- AI text generator</span>',
+                    'ChatGPT <span class="hidden-copy">- AI text generator</span>',
+                    'Highlighted and copied text, likely using an LLM <span class="hidden-copy">- AI text generator</span>',
+                    'Pasted text with LLM prompt <span class="hidden-copy">- AI text generator</span>'
+                ]
+            },
+            {
+                text: 'Other cheating software',
+                submenu: ['Other cheating software', 
+                    'Auto Mouse Clicker <span class="hidden-copy">- Other cheating software</span>',
+                    'Auto Mouse Scroller <span class="hidden-copy">- Other cheating software</span>',
+                    'Auto Mouse Jiggler/Mover <span class="hidden-copy">- Other cheating software</span>'
+                ]
+            },
+            
         ];
 
         const originalPersonaPhrases = [
@@ -1488,14 +1532,16 @@
             phraseListsContainer.innerHTML = '';
 
             // 3. Recreate tables with original data
-            const corpAuditTable = createPhraseTable('corp-audit-table', 'Corp Audit Notes', originalCorpAuditPhrases);
-            const toolsTable = createPhraseTable('tools-table', null, originalToolsPhrases);
+            const onplatformTable = createPhraseTable('corp-audit-table', null, OnplatformPhrases);
+            const abuseTable = createPhraseTable('abuse-table', 'Abuse', AbusePhrases);
+            const cheatingTable = createPhraseTable('tools-table', 'Cheating', CheatingPhrases);
             const personaTable = createPhraseTable('persona-table', 'Persona', originalPersonaPhrases);
             const othersTable = createPhraseTable('others-table', 'Others', []); // Others is initially empty
 
             // 4. Append tables to the container
-            phraseListsContainer.appendChild(corpAuditTable);
-            phraseListsContainer.appendChild(toolsTable);
+            phraseListsContainer.appendChild(onplatformTable);
+            phraseListsContainer.appendChild(abuseTable);
+            phraseListsContainer.appendChild(cheatingTable);
             phraseListsContainer.appendChild(personaTable);
             phraseListsContainer.appendChild(othersTable);
 
@@ -1509,13 +1555,15 @@
         document.addEventListener('DOMContentLoaded', () => {
             const phraseListsContainer = document.querySelector('.phrase-lists');
 
-            const corpAuditTable = createPhraseTable('corp-audit-table', 'Corp Audit Notes', originalCorpAuditPhrases);
-            const toolsTable = createPhraseTable('tools-table', null, originalToolsPhrases);
+            const onplatformTable = createPhraseTable('corp-audit-table', null, OnplatformPhrases);
+            const abuseTable = createPhraseTable('abuse-table', 'Abuse', AbusePhrases);
+            const cheatingTable = createPhraseTable('tools-table', 'Cheating', CheatingPhrases);
             const personaTable = createPhraseTable('persona-table', 'Persona', originalPersonaPhrases);
             const othersTable = createPhraseTable('others-table', 'Others', []);
 
-            phraseListsContainer.appendChild(corpAuditTable);
-            phraseListsContainer.appendChild(toolsTable);
+            phraseListsContainer.appendChild(onplatformTable);
+            phraseListsContainer.appendChild(abuseTable);
+            phraseListsContainer.appendChild(cheatingTable);
             phraseListsContainer.appendChild(personaTable);
             phraseListsContainer.appendChild(othersTable);
 
